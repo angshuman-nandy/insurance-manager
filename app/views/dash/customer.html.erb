@@ -1,0 +1,13 @@
+<%= render 'head' %>
+
+<div class="container">
+<h1>you are customer.</h1>
+		other customers:
+		<% @dd=Detail.all %>
+		<% @dd.each do |i| %>
+			<% if i.admin== false && i.user_id != @user.id%>
+			<%=	i.first_name+" "+i.last_name %> <br>
+			<% end %>
+			<% end %>
+
+	</div>

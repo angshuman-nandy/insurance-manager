@@ -1,0 +1,13 @@
+<%= render 'head' %>
+
+<div class="container">
+<h1>you are admin</h1>
+		other admins:
+		<% @dd=Detail.all %>
+		<% @dd.each do |i| %>
+			<% if i.admin== true && i.user_id != @user.id%>
+			<%=	i.first_name+" "+i.last_name %> <br>
+			<% end %>
+			<% end %>
+
+	</div>
