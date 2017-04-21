@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'dash/admin'
   get 'dash/customer'
   resources :details
+  resources :poltypes
+  resources :companies
 
   root to: 'home#index'
 

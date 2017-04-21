@@ -1,0 +1,37 @@
+<% render 'head' %>
+<div class="container" style="max-width: 80%;" >
+  <h2>all users</h2>
+  <p>all the users</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>email</th>
+        <th>admin/customer</th>
+        <th>admin's name</th>
+        <th>contact number</th>
+        <th>address</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @details.each do |i| %>
+      <tr>
+        <td><%=i.first_name%></td>
+        <td><%=i.last_name%></td>
+        <td><%=i.email%></td>
+        <% if i.admin == true %>
+          <td>admin</td>
+        <% else %>
+          <td>customer</td>
+        <% end %>
+        <td><%=i.admin_email%></td>
+        <td><%=i.contact_number%></td>
+        <td><%=i.address%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+
+ 

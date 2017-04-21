@@ -1,0 +1,21 @@
+<%= render 'head' %>
+<div class="container" style="max-width: 50%;" >
+  <h2>Companies</h2>
+  <p>all the available companies</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @companies.each do |i| %>
+      <tr>
+        <td><%=i.name%></td>
+        <td><%=i.description %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>

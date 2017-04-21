@@ -1,26 +1,34 @@
-<div class=container style="background-color: skyblue;">
+<div class=container style="background-color: white;">
 <% if user_signed_in? %>
 <% @user=current_user %>
+<%	@whoadmins = Detail.where(:admin => true )%>
+
+<% @ary= Array.new %>
+<% @whoadmins.each do |i| %>
+<% @ary.push(i.email) %>
+<% end %>
+
 <%= simple_form_for @detail do |f| %>
 <% if @detail.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" style="color: red;">
       <h2>
         <%= pluralize(@detail.errors.count, "error") %> prohibited
-        this from being saved:
+        this detail from being saved:
       </h2>
       <ul>
-        <% @article.errors.full_messages.each do |msg| %>
+        <% @detail.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-	<%= f.input :first_name, label: "First Name" %>
-	<%= f.input :last_name, label: "Last Name" %>
+	<%= f.input :first_name, placeholder: 'First Name',label: false %>
+	<%= f.input :last_name, placeholder: 'Last Name', label: false %>
 	<%= f.input :admin, label: "admin" %>
-	<%= f.input :admin_email, label: "email id of admin" %>
-	<%= f.input :contact_number, label: "contact number" %>
-	<%= f.input :address, label: "Address" %>
+	<%= f.input :admin_email,:collection => @whoadmins,:label_method => :first_name,:value_method => :email,:label => "admin name"%>
+
+	<%= f.input :contact_number, placeholder: 'Contact Number',label: false %>
+	<%= f.input :address, placeholder: 'Address',label: false %>
 	<%= f.button :submit %>
 
 

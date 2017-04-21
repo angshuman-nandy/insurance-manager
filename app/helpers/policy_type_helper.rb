@@ -1,0 +1,2 @@
+module PolicyTypeHelper
+end

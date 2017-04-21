@@ -1,0 +1,10 @@
+<div class="container" style="max-width: 
+40%; align-self: center;">
+<%= simple_form_for @poltype do |f| %>
+	<%= f.input :name, placeholder: 'type of policy' %>
+	<%= f.input :description, label: "description" %>
+	<%= f.input :company_id,:collection => @allcompany,:label_method => :name,:value_method => :id,:label => "comapny name"%>
+
+	<%= f.submit "create policy type" %>
+<%end%>
+</div>

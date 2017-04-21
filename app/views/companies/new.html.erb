@@ -1,0 +1,8 @@
+<%= render 'head' %>
+<div class="container" style="max-width: 40%; align-self: center;">
+<%= simple_form_for @company do |f| %>
+<%= f.input :name, placeholder: "name of company" %>
+<%= f.input :description, placeholder: "description of company" %>
+<%= f.submit "new company" %>
+	<% end %>
+	</div>
