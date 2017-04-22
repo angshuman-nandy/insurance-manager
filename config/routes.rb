@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :details
   resources :poltypes
   resources :companies
+  resources :policies
 
   root to: 'home#index'
 

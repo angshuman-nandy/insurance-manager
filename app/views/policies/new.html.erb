@@ -1,0 +1,17 @@
+<div class="container" style="max-width: 50%; align-self: center;">
+<%= simple_form_for @policy do |f| %>
+
+	<%= f.input :holder_name, placeholder: 'holder name' %>
+	<%= f.input :description, placeholder: 'description' %>
+	<%= f.input :sum_insured, label: "insured amount(in INR)" %>
+	<%= f.input :premium_amount, label: "premium amount(in INR)" %>
+	<%= f.input :commission, label: "commission" %>
+	<%= f.input :purchase_date, label: "purchase date" %>
+	<%= f.input :mature_date, label: "mature date" %>
+	<%= f.input :company_id,:collection => @allcompany,:label_method => :name,:value_method => :id,:label => "comapny name"%>
+	<%= f.input :user_id,:collection => @alluserdetail,:label_method => :first_name,:value_method => :id,:label => "user name"%>
+	<%= f.input :policy_type,:collection => @allptype,:label_method => :name,:value_method => :name,:label => "policy type"%>
+
+	<%= f.submit "create policy type" %>
+<% end %>
+</div>

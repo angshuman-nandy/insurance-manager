@@ -3,20 +3,20 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Insurence Manager</a>
     </div>
-    <% if user_signed_in? %>
-     <% @user= current_user %>
+
+    <% if user_signed_in? && controller.controller_name != "details" %>
+    <% @user= current_user %>
     <% @user_details = @user.detail %>
     <ul class="nav navbar-nav navbar-right" style="text-align: center;">
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <%= @user_details.first_name %>
         <span class="caret"></span></a>
-        <ul class="dropdown-menu" style="text-align: center;>
-          <li><a href="#">edit</a></li>
+        <ul class="dropdown-menu" style="text-align: center;">
+          <li> <a href="#">edit</a></li>
           <li> <%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %></li>
         </ul>
         <% end %>
       </li>
     </ul>
   </div>
-
 </nav>

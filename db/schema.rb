@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420153636) do
+ActiveRecord::Schema.define(version: 20170421075523) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20170420153636) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "user_id"
+    t.integer  "company_id"
+    t.index ["company_id"], name: "index_policies_on_company_id", using: :btree
     t.index ["user_id"], name: "index_policies_on_user_id", using: :btree
   end
 
@@ -75,6 +77,7 @@ ActiveRecord::Schema.define(version: 20170420153636) do
   end
 
   add_foreign_key "details", "users"
+  add_foreign_key "policies", "companies"
   add_foreign_key "policies", "users"
   add_foreign_key "poltypes", "companies"
 end
