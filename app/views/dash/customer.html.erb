@@ -1,12 +1,4 @@
 <div class="jumbotron" id="intro_customer">
 <h1>Hello, <%= @user_details.first_name%> </h1>
-		other customers:
-		<% @dd=Detail.all %>
-		<% @dd.each do |i| %>
-			<% if i.admin== false && i.user_id != @user.id%>
-			<%=	i.first_name+" "+i.last_name %> <br>
-			<% end %>
-			<% end %>
-
 	</div>
 	<%= stylesheet_link_tag 'dash' %>

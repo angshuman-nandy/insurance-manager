@@ -1,0 +1,43 @@
+<% @policies= Policy.all %>
+<div class="container" style="max-width: 85%;" >
+  <h2>all policies</h2>
+  <p>all the policies</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>user name</th>
+        <th>holders name</th>
+        <th>company name</th>
+        <th>policy type</th>
+        <th>description</th>
+        <th>sum insured</th>
+        <th>premium amount</th>
+        <th>commission</th>
+        <th>purchase date</th>
+        <th>mature date</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @policies.each do |i| %>
+    <% @usr=User.find(i.user_id) %>
+    <% @detail= @usr.detail %>
+    <% @company=Company.find(i.company_id) %>
+    <% @poltype=Poltype.find(i.poltype_id) %>
+      <tr>
+      <td><%=@detail.first_name%></td>
+        <td><%=i.holder_name%></td>
+        <td><%=@company.name%></td>
+        <td><%=i.policy_type%></td>
+        <td><%=i.description%></td>
+        <td><%=i.sum_insured%></td>
+        <td><%=i.premium_amount%></td>
+        <td><%=i.commission%></td>
+        <td><%=i.purchase_date%></td>
+        <td><%=i.mature_date%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+
+ 

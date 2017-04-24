@@ -1,23 +1,25 @@
 <div class="jumbotron" id="intro_admin">
-<h1>Hello, <%= @user_details.first_name%> </h1>
-		other admins:
-		<% @dd=Detail.all %>
-		<% @dd.each do |i| %>
-			<% if i.admin== true && i.user_id != @user.id%>
-			<%=	i.first_name+" "+i.last_name %> <br>
-			<% end %>
-			<% end %>
-
-	</div>
- <div class="container">
-<%= link_to "new policy type", new_poltype_path %>
-<br>
+  <h1>Hello, <%= @user_details.first_name%> </h1>
+		
 </div>
-<div class="container" style="border:1px solid black;">
-<h3>companies</h3>
-<%= link_to "view all companies",companies_path %>
-<br>
-<%= link_to "new company", new_company_path %>
+<div class="col-md-5" style="border:1px solid black; padding-top: 2%; margin: 2%; height: 250px;" >
+  <h2>policy type </h2>
+  <%= link_to "new policy type", new_poltype_path, :class => "btn btn-primary" %>
+</div>
+<div class="col-md-5" style="border:1px solid black; padding-top: 2%; margin: 2%; height: 250px;" >
+  <h2>companies </h2>
+  <%= link_to "new company", new_company_path, :class => "btn btn-primary" %>
+  <%= link_to "view all companies",companies_path, :class => "btn btn-primary" %>
+</div>
+<div class="col-md-5" style="border:1px solid black; padding-top: 2%; margin: 2%; height: 250px;" >
+  <h2>policies </h2>
+  <%= link_to "new policy",policies_select_company_path, :class => "btn btn-primary" %>
+  <%= link_to "all policies",policies_path, :class => "btn btn-primary" %>
+</div>
+<div class="col-md-5" style="border:1px solid black; padding-top: 2%; margin: 2%; height: 250px;" >
+  <h2>users </h2>
+  <%= link_to "all users",details_path, :class => "btn btn-primary" %>
+</div>
 
- </div>
+
  <%= stylesheet_link_tag 'dash' %>

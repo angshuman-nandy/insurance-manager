@@ -1,10 +1,23 @@
+
 <%= @c_id %>
 <%= @p_id %>
 <% @company= Company.find(@c_id) %>
 <% @plan = Poltype.find(@p_id) %>
 <div class="container" style="max-width: 50%; align-self: center;">
 <%= simple_form_for @policy do |f| %>
-
+<% if @policy.errors.any? %>
+    <div id="error_explanation" style="color: red;">
+      <h2>
+        <%= pluralize(@policy.errors.count, "error") %> prohibited
+        this policy from being saved:
+      </h2>
+      <ul>
+        <% @policy.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
 	<%= f.input :holder_name, placeholder: 'holder name' %>
 	<%= f.input :description, placeholder: 'description' %>
 	<%= f.input :sum_insured, input_html: {value: @plan.sum_insured}, :readonly => true %>
@@ -14,8 +27,12 @@
 	<%= f.input :mature_date, label: "mature date" %>
 	<%= f.input :premium_amount, input_html: {value: @plan.premium_amount}, :readonly => true %>
 	<%= f.input :company_id, input_html: {value: @c_id}, :readonly => true, :as => :hidden %>
-	<%= f.input :user_id,:collection => @alluserdetail,:label_method => :first_name,:value_method => :id,:label => "user name"%>
-	<%= f.input :poltype_id, input_html: {value: @c_id}, :readonly => true, :as => :hidden  %>
+	<% if @u_detail.admin == true %>
+	<%= f.input :user_id,:collection => @alluserdetail,:label_method => :first_name,:value_method => :user_id,:label => "user name"%>
+	<% else %>
+	<%= f.input :user_id, input_html: {value: @u_detail.user_id}, :readonly => true %>
+	<% end %>
+	<%= f.input :poltype_id, input_html: {value: @p_id}, :readonly => true, :as => :hidden  %>
 	<%= f.input :policy_type, input_html: {value: @plan.name}, :readonly => true %>
 
 	<%= f.submit "create policy type" %>

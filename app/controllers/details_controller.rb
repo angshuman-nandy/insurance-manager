@@ -1,6 +1,10 @@
 class DetailsController < ApplicationController
 def index
-  @details = Detail.all
+  if user_signed_in?
+    @details = Detail.all
+  else
+    redirect_to new_user_session_path
+  end
 end
 def show
   end

@@ -1,5 +1,12 @@
 <%= devise_error_messages! %>
-<div class="container" style="max-width: 50%; align-self: center; background-color: white;">
+<div class="container">
+  <div class="rows" >
+  <div class="col-md-8 col-sm-6 col-xs-12">
+            <h1 class="cover-heading">Its Simple, Its Hastlefree</h1>
+            <p class="lead">Manage your insurence policies. Buy, edit and view all your policies. Forget all the hastle of keeping track of poicies and missing premium dates. let us manage your policies better </p>
+            <p class="lead">
+  </div>
+<div class="col-md-3 col-sm-6 col-xs-12" style="background-color: white;">
 <h2>Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -15,4 +22,6 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+</div>
 </div>
