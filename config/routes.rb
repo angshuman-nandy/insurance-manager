@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'dash/admin'
   get 'dash/customer'
+  get 'policies/select_company'
+  get 'policies/select_plan'
   resources :details
   resources :poltypes
   resources :companies

@@ -1,5 +1,5 @@
-<div class="container">
-<h1>you are admin</h1>
+<div class="jumbotron" id="intro_admin">
+<h1>Hello, <%= @user_details.first_name%> </h1>
 		other admins:
 		<% @dd=Detail.all %>
 		<% @dd.each do |i| %>
@@ -20,3 +20,4 @@
 <%= link_to "new company", new_company_path %>
 
  </div>
+ <%= stylesheet_link_tag 'dash' %>

@@ -1,0 +1,29 @@
+<div class="container" style="max-width: 80%;" >
+  <h2>all plans</h2>
+              
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Company Name</th>
+        <th>policy type</th>
+        <th>description</th>
+        <th>duration</th>
+        <th>insured amount</th>
+        <th>premium amount</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @poltypes.each do |i| %>
+      <tr>
+      <% @company= Company.find(i.company_id) %>
+        <td><%= @company.name%></td>
+        <td><%=i.name%></td>
+        <td><%=i.description%></td>
+        <td><%=i.duration%></td>
+        <td><%=i.sum_insured%></td>
+        <td><%=i.premium_amount%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>

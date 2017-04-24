@@ -1,9 +1,15 @@
 <div class="container" style="max-width: 
 40%; align-self: center;">
+<% @duration=[5,10,15,20,25,30,35,40,45,50] %>
 <%= simple_form_for @poltype do |f| %>
 	<%= f.input :name, placeholder: 'type of policy' %>
-	<%= f.input :description, label: "description" %>
-	<%= f.input :company_id,:collection => @allcompany,:label_method => :name,:value_method => :id,:label => "comapny name"%>
+	<%= f.input :description, label: "description", placeholder: 'brief description' %>
+	<%= f.input :company_id,:collection => @allcompany,:label_method => :name,:value_method => :id,:label => "comapny name", placeholder: 'choose company'%>
+	<%= f.input :duration,:collection => @duration,:label => "duration", placeholder: 'duration'%>
+	<%= f.input :sum_insured, :label => "insured amount",placeholder: 'in INR' %>
+	<%= f.input :premium_amount, :label => "premium amount",placeholder: 'in INR' %>
+
+
 
 	<%= f.submit "create policy type" %>
 <%end%>
