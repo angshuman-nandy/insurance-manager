@@ -28,6 +28,7 @@ class PoliciesController < ApplicationController
 		
   end
   def new
+    if user_signed_in?
       @policy= Policy.new
 	  @c_id = params[:company_id]
 	  @p_id = params[:poltype_id]
@@ -37,6 +38,10 @@ class PoliciesController < ApplicationController
 	  if @c_id == nil
 	  	redirect_to policies_select_company_path
 	  end
+  else
+     redirect_to new_user_session_path
+    end  
+
 	  
 		
   end

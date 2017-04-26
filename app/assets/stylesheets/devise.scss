@@ -1,0 +1,23 @@
+body{
+    background:  linear-gradient(to bottom, rgba(0,0,0,0.7) 100%,rgba(255,255,255,0.9) 100%),url(umbrella.jpg)
+    
+}
+#cover{
+    text-align: center;
+    margin-top: 20%;
+    margin-left: 10%;
+    max-width: 70%;
+    color: white;
+}
+.rounded_corners{
+   -webkit-border-radius: 5px;
+           border-radius: 5px;
+}
+#login_form{
+color: white;
+margin-top: 5%;
+padding-left: 5%;
+padding-right: 5%;
+    opacity: 0.9;
+    height: 80%;
+}

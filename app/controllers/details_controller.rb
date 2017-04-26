@@ -7,7 +7,7 @@ def index
   end
 end
 def show
-  end
+end
 
 def new
 	if user_signed_in?
@@ -16,29 +16,38 @@ def new
   else
     redirect_to new_user_session_path
   end
+end
+def make_admin
+  @detail= Detail.find_by_user_id(params[:user_id])
+  @detail.toggle :admin
+  @detail.save
+  if @detail.save
+    flash[:notice] = "the user was made admin"
+    redirect_to details_path
+  else
+    flash[:notice] = "the user was not made admin"
+    redirect_to details_path
   end
-
+end
   
 
 def create
   @detail = Detail.new(detail_params)
-  		@detail.email = current_user.email
-  		@detail.user_id = current_user.id 
-      @detail.save
-  	if @detail.save
+  	@detail.email = current_user.email
+  	@detail.user_id = current_user.id 
+    @detail.save
+    if @detail.save
   		redirect_to dash_customer_path
     else
-       @detail = Detail.new(detail_params)
+      @detail = Detail.new(detail_params)
       @detail.email = current_user.email
       @detail.user_id = current_user.id 
       @detail.save
       render 'new'
   	end
+end
 
-  end
-
-  private
-
+private
   def detail_params
   	params.require(:detail).permit(:first_name, :last_name, :admin, :admin_email, :contact_number, :address,)
   end

@@ -27,6 +27,10 @@
         <td><%=i.admin_email%></td>
         <td><%=i.contact_number%></td>
         <td><%=i.address%></td>
+         <% if i.admin == false %>
+          <td><%= link_to "make admin", details_make_admin_path(:user_id => i.user_id) %></td>
+         <%end%>
+
       </tr>
       <% end %>
     </tbody>

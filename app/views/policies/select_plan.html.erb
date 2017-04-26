@@ -2,15 +2,16 @@
 <% @plans=Poltype.where(:company_id => @c_id) %>
 <div class="container">
   <div class="rows">
-    <% @plans.each do |i| %>
+    <% @plans.each do |i| %> 
+    <%= link_to new_policy_path(:company_id => @c_id,:poltype_id => i.id) do %>
       <div class="col-md-5" style="border:1px solid black; padding-top: 0; margin: 2%; height: 300px;" >
 	   <h2><%=i.name%></h2>
 	    <br>description: <%=i.description%> <br>
 	    <br>duration: <%=i.duration%> <br>
 	    <br>Insured Amount: <%=i.sum_insured%> <br>
 	    <br>Premium Amount: <%=i.premium_amount%> <br>
-	   <%= link_to "Select" ,{:action => :new, :company_id => i.company_id, :poltype_id => i.id}, :class=> "btn btn-primary" %>
 	  </div>
+	  <% end %>
 <% end %>
 	</div>
 </div>
