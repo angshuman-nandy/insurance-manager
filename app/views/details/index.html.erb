@@ -1,14 +1,17 @@
-<div class="container" style="max-width: 80%;" >
+ <% @user = current_user %>
+   <% @u_detail = @user.detail %>
+
+<div class="container"  >
+
   <h2>all users</h2>
   <p>all the users</p>            
-  <table class="table table-striped">
-    <thead>
+  <table class="table table-inverse table-bordered table-hover">
+    <thead class="thead-default">
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>email</th>
-        <th>admin/customer</th>
-        <th>admin's name</th>
+        <th>user</th>
         <th>contact number</th>
         <th>address</th>
       </tr>
@@ -24,13 +27,17 @@
         <% else %>
           <td>customer</td>
         <% end %>
-        <td><%=i.admin_email%></td>
         <td><%=i.contact_number%></td>
         <td><%=i.address%></td>
+        <% if @u_detail.admin == true %>
          <% if i.admin == false %>
-          <td><%= link_to "make admin", details_make_admin_path(:user_id => i.user_id) %></td>
+          <td><%= link_to "make admin", details_make_admin_path(:user_id => i.user_id),:class => "btn btn-primary custom_btn" %></td>
          <%end%>
-
+          <td><%= link_to "edit", details_cedit_path(:user_id => i.user_id),:class => "btn btn-primary custom_btn" %></td> 
+          <td><%= link_to 'Destroy', details_cdestroy_path(:user_id => i.user_id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn"%></td>
+          <% end %>
       </tr>
       <% end %>
     </tbody>

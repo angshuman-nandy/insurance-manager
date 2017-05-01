@@ -16,3 +16,7 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+
+$(".brand").click(function(){
+    alert("The paragraph was clicked.");
+});

@@ -1,0 +1,34 @@
+<% @det = Detail.find_by_user_id(@policy.user_id) %>
+<div class="container" style="max-width: 50%; align-self: center;">
+<h2> edit policy </h2>
+<h3> holder: <%= @det.first_name %> <%= @det.last_name %> </h3>
+<%= simple_form_for @policy do |f| %>
+<% if @policy.errors.any? %>
+    <div id="error_explanation" style="color: red;">
+      <h2>
+        <%= pluralize(@policy.errors.count, "error") %> prohibited
+        this policy from being saved:
+      </h2>
+      <ul>
+        <% @policy.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+	<%= f.input :user_id, input_html: {value: @policy.user_id}, :readonly => true, :as => :hidden %>
+	<%= f.input :description, placeholder: 'description' %>
+	<%= f.input :sum_insured, input_html: {value: @policy.sum_insured}, :readonly => true %>
+	<%= f.input :premium_amount, input_html: {value: @policy.premium_amount}, :readonly => true %>>
+	<%= f.input :commission, input_html: {value: @policy.commission} %>
+	<%= f.input :purchase_date, label: "purchase date",  input_html: {value: @policy.purchase_date}, :readonly => true  %>
+	<%= f.input :mature_date, label: "mature date",input_html: {value: @policy.mature_date} %>
+	<%= f.input :premium_amount, input_html: {value: @policy.premium_amount}, :readonly => true %>
+	<%= f.input :company_id, input_html: {value: @policy.company_id}, :readonly => true, :as => :hidden %>
+	<%= f.input :poltype_id, input_html: {value: @policy.poltype_id}, :readonly => true, :as => :hidden  %>
+	<%= f.input :policy_type, input_html: {value: @policy.policy_type}, :readonly => true %>
+
+	<%= f.submit "create policy" %>
+<% end %>
+</div>
+

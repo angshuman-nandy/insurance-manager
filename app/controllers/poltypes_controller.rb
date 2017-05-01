@@ -15,7 +15,7 @@ class PoltypesController < ApplicationController
 		 if @poltype.save
   		redirect_to dash_admin_path
   		else
-  			redirect_to new_poltype_path
+  			render 'new'
   		end
 	end
  private

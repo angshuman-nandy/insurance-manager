@@ -1,8 +1,10 @@
+ <% @user = current_user %>
+   <% @u_detail = @user.detail %>
 <div class="container" style="max-width: 50%;" >
   <h2>Companies</h2>
   <p>all the available companies</p>            
-  <table class="table table-striped">
-    <thead>
+  <table class="table">
+    <thead class="thead-inverse">
       <tr>
         <th>Name</th>
         <th>Description</th>
@@ -13,6 +15,12 @@
       <tr>
         <td><%=i.name%></td>
         <td><%=i.description %></td>
+         <% if @u_detail.admin == true %>
+        <td><%= link_to "edit", edit_company_path(i), :class => "btn btn-primary custom_btn" %></td>
+         <td><%= link_to 'Destroy', company_path(i),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn"%></td>
+              <% end %>
       </tr>
       <% end %>
     </tbody>

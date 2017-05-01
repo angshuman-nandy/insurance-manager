@@ -11,6 +11,8 @@ module InM
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+     config.assets.enabled = true
+     config.assets.initialize_on_precompile = true
   ActionMailer::Base.smtp_settings = {
 
   	:address => 'smtp.gmail.com',
@@ -20,6 +22,7 @@ module InM
   	:password => '',
   	:authentication => 'login',
   	:enable_starttls_auto => true
+
 
   }
 

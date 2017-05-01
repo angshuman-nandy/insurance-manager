@@ -1,11 +1,16 @@
 <% @policies= Policy.all %>
+<% if @u_detail.admin == true %>
+  <% @pol = @policies %>
+  <% else %>
+  <% @pol=Policy.where(:user_id => @user.id) %>
+  <% end %>
+
 <div class="container" style="max-width: 85%;" >
   <h2>all policies</h2>
   <p>all the policies</p>            
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>user name</th>
         <th>holders name</th>
         <th>company name</th>
         <th>policy type</th>
@@ -18,14 +23,13 @@
       </tr>
     </thead>
     <tbody>
-    <% @policies.each do |i| %>
+    <% @pol.each do |i| %>
     <% @usr=User.find(i.user_id) %>
     <% @detail= @usr.detail %>
     <% @company=Company.find(i.company_id) %>
     <% @poltype=Poltype.find(i.poltype_id) %>
       <tr>
-      <td><%=@detail.first_name%></td>
-        <td><%=i.holder_name%></td>
+      <td><%=@detail.first_name%> <%= @detail.last_name%></td>
         <td><%=@company.name%></td>
         <td><%=i.policy_type%></td>
         <td><%=i.description%></td>
@@ -34,7 +38,14 @@
         <td><%=i.commission%></td>
         <td><%=i.purchase_date%></td>
         <td><%=i.mature_date%></td>
+        <% if @u_detail.admin == true %>
+        <td><%= link_to "edit", edit_policy_path(i), :class => "btn btn-primary custom_btn" %></td>
+         <td><%= link_to 'Destroy', policy_path(i),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn"%></td>
+              <% end %>
       </tr>
+
       <% end %>
     </tbody>
   </table>

@@ -22,16 +22,12 @@
       </ul>
     </div>
   <% end %>
-	<%= f.input :first_name, placeholder: 'First Name',label: false %>
-	<%= f.input :last_name, placeholder: 'Last Name', label: false %>
+	<%= f.input :first_name, placeholder: 'First Name' %>
+	<%= f.input :last_name, placeholder: 'Last Name' %>
 	<%= f.input :admin, input_html: {value: 0}, :readonly => true,:as => :hidden %>
-	<%= f.input :admin_email,:collection => @whoadmins,:label_method => :first_name,:value_method => :email,:label => "admin name"%>
-
-	<%= f.input :contact_number, placeholder: 'Contact Number',label: false %>
-	<%= f.input :address, placeholder: 'Address',label: false %>
+	<%= f.input :contact_number, placeholder: 'Contact Number'%>
+	<%= f.input :address, placeholder: 'Address' %>
 	<%= f.button :submit %>
-
-
 	<% end %>
 	<% else %>
 	<p>user not signed in</p>

@@ -12,8 +12,9 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
+    <%= f.button :submit, "Change my password", :class => "login_button" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+<%= stylesheet_link_tag 'devise' %>

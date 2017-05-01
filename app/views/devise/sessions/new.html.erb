@@ -1,33 +1,27 @@
 <%= devise_error_messages! %>
-  <div class="container-fluid">
-        <div class="rows">
-            <div class="col-md-8 col-sm-8 col-xs-12">
-             <div class="inner cover" id="cover">
-            <h1 class="cover-heading">Its Simple, Its Hastlefree</h1>
-            <p class="lead">Manage your insurence policies. Buy, edit and view all your policies. Forget all the hastle of keeping track of poicies and missing premium dates. let us manage your policies better </p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-            </p>
-          </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12 rounded_corners" id="login_form">
-            <h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true, placeholder: 'example@domain.com'%>
-    <%= f.input :password, required: false, placeholder: 'password'%>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-            </div>
-            </div>
+<div class="container">
+  <div class="rows">
+    <div class="col-md-7 col-sm-6 col-xs-12">
+     <div class="inner cover" id="cover">
+       <h1 class="cover-heading">Its Simple, Its Hastlefree</h1>
+       <p class="lead">Manage your insurence policies. Buy, edit and view all your policies. Forget all the hastle of keeping track of poicies and missing premium dates. manage your policies better </p>
+     </div>
+     </div>
+    <div class="col-md-4 col-sm-6 col-xs-12 box" id="login_form">
+      <h2>Log in</h2>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, required: false, autofocus: true, placeholder: 'example@domain.com'%>
+          <%= f.input :password, required: false, placeholder: 'password'%>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Log in" , :class => "login_button" %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
 
-        <%= stylesheet_link_tag 'devise' %>
+<%= stylesheet_link_tag 'devise' %>

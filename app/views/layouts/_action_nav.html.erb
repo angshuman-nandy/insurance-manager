@@ -1,0 +1,82 @@
+<% @c = controller.controller_name %>
+<% @a = controller.action_name %>
+<% @ac = @c + @a %>
+<% if user_signed_in? && @ac != "detailsnew" && @ac != "detailscreate"%>
+<% @ud = Detail.find_by_user_id(current_user.id) %>
+   <div class="container action_stub" >
+        <ul class="list-inline" >
+        <% if controller.action_name == "company_handle" || controller.controller_name == "companies" %>
+            <li id="c_view_item"><%= link_to "view all companies",companies_path, :class => "btn btn-primary custom_btn"%></li>
+            <% if @ud.admin == true %>
+            <li id="c_add_item"><%= link_to "add new company", new_company_path, :class => "btn btn-primary custom_btn"%></li>
+            <% end %>
+            <% end %>
+         <% if controller.action_name == "policy_handle"|| controller.controller_name == "policies" %>
+         <li id="p_view_item"><%= link_to "view all policies",policies_path, :class => "btn btn-primary custom_btn"%></li>
+            <li id="p_add_item"><%= link_to "add new policy", policies_select_company_path, :class => "btn btn-primary custom_btn"%></li>
+            <%end%>
+            <% if controller.action_name == "user_handle" || controller.controller_name == "details" %>
+            <li id="u_view_item"><%= link_to "view all users",details_path, :class => "btn btn-primary custom_btn"%></li>
+            <% end %>
+            <% if controller.action_name == "poltype_handle" || controller.controller_name == "poltypes" %>
+            <li id="pl_view_item"><%= link_to "view all plans",new_poltype_path, :class => "btn btn-primary custom_btn"%></li>
+            <% if @ud.admin == true %>
+            <li id="pl_add_item"><%= link_to "add new plan", new_poltype_path, :class => "btn btn-primary custom_btn"%></li>
+            <% end %>
+            <% end %>
+			</ul>
+        </div>
+        
+ <p id="a_name"><%= controller.action_name %></p>
+  <p id="c_name"><%= controller.controller_name %></p>
+  <script type="text/javascript">
+
+  actionName = $('#a_name').text();
+  controllerName = $('#c_name').text();
+  
+  if (controllerName == "companies")
+  {
+
+    if (actionName=="index")
+    {
+    $('#c_view_item').addClass("active");
+    }
+    if(actionName=="new"){
+     
+      $('#c_add_item').addClass("active");
+    }
+  }
+  if (controllerName=="policies")
+  {
+    if (actionName=="index")
+    {
+    $('#p_view_item').addClass("active");
+    }
+    if(actionName=="new"|| actionName=="select_company" || actionName=="select_plan"){
+      $('#p_add_item').addClass("active");
+    }
+  }
+    if (controllerName=="details")
+  {
+    if (actionName=="index")
+    {
+    $('#u_view_item').addClass("active");
+    }
+    if(actionName=="new")
+    {
+      $('#u_view_item').hide();
+    }
+  }
+    if (controllerName=="poltypes")
+  {
+    if (actionName=="index")
+    {
+    $('#pl_view_item').addClass("active");
+    }
+    if(actionName=="new"){
+      $('#pl_add_item').addClass("active");
+    }
+  }
+</script>
+
+<% end %>
