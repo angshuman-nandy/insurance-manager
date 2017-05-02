@@ -1,5 +1,7 @@
 class Policy < ApplicationRecord
 	belongs_to :company
+	belongs_to :user
+	belongs_to :poltype
 	validates :policy_type, presence: true
 	validates :sum_insured, presence: true
 	validates :premium_amount, presence: true

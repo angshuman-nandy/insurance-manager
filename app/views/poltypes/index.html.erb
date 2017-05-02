@@ -1,8 +1,10 @@
-<div class="container" style="max-width: 80%;" >
-  <h2>all plans</h2>
-              
-  <table class="table table-striped">
-    <thead>
+ <% @user = current_user %>
+   <% @u_detail = @user.detail %>
+<div class="container" >
+  <h2>Plans</h2>
+  <p>all the available plans of listed companies</p>            
+  <table class="table table-hover table-responsive">
+    <thead class="thead-inverse">
       <tr>
         <th>Company Name</th>
         <th>policy type</th>
@@ -10,6 +12,8 @@
         <th>duration</th>
         <th>insured amount</th>
         <th>premium amount</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +26,12 @@
         <td><%=i.duration%></td>
         <td><%=i.sum_insured%></td>
         <td><%=i.premium_amount%></td>
+       <% if @u_detail.admin == true %>
+        <td><%= link_to "edit", edit_poltype_path(i), :class => "btn btn-primary custom_btn_small" %></td>
+         <td><%= link_to 'Destroy', poltype_path(i),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%></td>
+              <% end %>
       </tr>
       <% end %>
     </tbody>

@@ -19,24 +19,42 @@
 
 .brand{
     padding-top: 15px;
-    background-color: rgba(white,0.5);
+    background-color: rgba(black,0.9);
     padding-bottom: 30px;
     align-self: center;
     text-align: center;
-    font-family: 'Courgette', cursive;
-    font-size: 70px;
-     -webkit-border-radius: 50px;
-           border-radius: 50px;
-           font-weight: 900;
+    font-family: 'Bilbo', cursive;
+    font-size: 90px;
+           font-weight: bolder;
    a{
-    color: black;
+    color: white;
 	 text-decoration: none !important;
 	}
  h1:hover{
-	color:#424242;
+	color:rgba(white,0.5);
 	text-decoration: none;
 
 }
+}
+.box-form{
+    padding: 3%;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
+     background-color: rgba(238, 238, 238,0.5);
+     font-family: 'Comfortaa', cursive;
+     max-width: 60%;
+     align-self:centre;
+     webkit-border-radius: 50px;
+           border-radius: 50px;
+    margin-bottom: 5%;
+}
+.box-form:hover{
+      background-color: rgba(238, 238, 238,0.8);
+}
+.form-info{
+    max-weidth: 30%;
+    align-self: center;
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
 }
 .info-box{
 margin-bottom: 1%;
@@ -69,19 +87,27 @@ h1{
     height: 50px;
     width: auto;
     color: rgba(black,0.9);
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Inconsolata', monospace;
     font-size: 25px;
     box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 5px;
            border-radius: 5px;
 }
-.btn_group{
-    margin-left: 5%;
-    text-align: center;
-    margin-top: 5%;
-    align-self: center;
+.custom_btn_small{
+ background-color: rgba(white,0.9);
+    border: 0;
+    height: auto;
+    font-weight: 500;
+    width: auto;
+    color: rgba(black,0.9);
+    font-family: 'Inconsolata', monospace;
+    font-size: 20px;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 5px;
+           border-radius: 5px;
+    
 }
-.custom_btn:hover{
+.custom_btn:hover,.custom_btn_small:hover{
     background-color: black;
 }
 
@@ -90,7 +116,12 @@ h1{
     color: black;
     background-color: white;
     border:0;
-    border-bottom: 2px solid rgba(black,0.5);
+
+}
+.navbar-right li a{
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    font-weight: bold;
 }
 #extra_padding li{
     margin-left:12px;
@@ -155,4 +186,13 @@ color: white
 }
 .action_stub ul li a{
     margin-top: 3%;
+}
+table{
+    font-family: 'Dosis', sans-serif;
+    font-weight: bold;
+}
+thead{
+    background-color: black;
+    color: white;
+    font-weight: bolder;
 }

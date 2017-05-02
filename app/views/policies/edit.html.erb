@@ -28,7 +28,7 @@
 	<%= f.input :poltype_id, input_html: {value: @policy.poltype_id}, :readonly => true, :as => :hidden  %>
 	<%= f.input :policy_type, input_html: {value: @policy.policy_type}, :readonly => true %>
 
-	<%= f.submit "create policy" %>
+	<%= f.submit "create policy", :class => "btn btn-primary custom_btn_small" %>
 <% end %>
 </div>
 

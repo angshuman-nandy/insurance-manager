@@ -19,7 +19,7 @@
             <li id="u_view_item"><%= link_to "view all users",details_path, :class => "btn btn-primary custom_btn"%></li>
             <% end %>
             <% if controller.action_name == "poltype_handle" || controller.controller_name == "poltypes" %>
-            <li id="pl_view_item"><%= link_to "view all plans",new_poltype_path, :class => "btn btn-primary custom_btn"%></li>
+            <li id="pl_view_item"><%= link_to "view all plans",poltypes_path, :class => "btn btn-primary custom_btn"%></li>
             <% if @ud.admin == true %>
             <li id="pl_add_item"><%= link_to "add new plan", new_poltype_path, :class => "btn btn-primary custom_btn"%></li>
             <% end %>

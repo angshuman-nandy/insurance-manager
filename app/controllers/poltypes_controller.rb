@@ -1,14 +1,22 @@
 class PoltypesController < ApplicationController
 	def index
+		if user_signed_in?
 		@poltypes= Poltype.all
 		@allcompany= Company.all
+	else
+		redirect_to new_user_session_path
+	end
 	end
 	def show
 		
 	end
 	def new
+		if user_signed_in?
 		@poltype = Poltype.new
 		@allcompany = Company.all
+	else
+		redirect_to new_user_session_path
+	end
 	end
 	def create
 		 @poltype= Poltype.new(poltype_params)
@@ -18,6 +26,38 @@ class PoltypesController < ApplicationController
   			render 'new'
   		end
 	end
+
+	def edit
+     if user_signed_in?
+    @poltype = Poltype.find(params[:id])
+    @user = current_user
+    @u_detail = @user.detail
+  else
+    redirect_to new_user_session_path
+
+  end
+    
+  end
+	def update
+     @poltype = Poltype.find(params[:id])
+  if @poltype.update(poltype_params)
+   redirect_to poltypes_path, :notice => "plan edited!!" 
+  else
+    render 'edit'
+  end
+end
+def destroy
+  @poltype = Poltype.find(params[:id])
+  @policy_del = Policy.find_by_poltype_id(@poltype.id)
+  if @policy_del!= nil
+  @policy_del.destroy
+	end
+  @poltype.destroy
+ 
+  redirect_to poltypes_path, :notice => "plan deleted"
+end
+
+
  private
 
   def poltype_params

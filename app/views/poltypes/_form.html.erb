@@ -1,5 +1,4 @@
-<div class="container" style="max-width: 
-40%; align-self: center;">
+<div class="container box-form">
 <% @duration=[5,10,15,20,25,30,35,40,45,50] %>
 <%= simple_form_for @poltype do |f| %>
 	<%= f.input :name, placeholder: 'type of policy' %>
@@ -11,6 +10,6 @@
 
 
 
-	<%= f.submit "create policy type" %>
+	<%= f.submit "submit",:class => "btn btn-primary custom_btn_small" %>
 <%end%>
 </div>

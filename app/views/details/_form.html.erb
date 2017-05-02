@@ -1,4 +1,4 @@
-<div class=container style="background-color: white;">
+<div class="container box-form">
 <% if user_signed_in? %>
 <% @user=current_user %>
 <%	@whoadmins = Detail.where(:admin => true )%>
@@ -27,7 +27,7 @@
 	<%= f.input :admin, input_html: {value: 0}, :readonly => true,:as => :hidden %>
 	<%= f.input :contact_number, placeholder: 'Contact Number'%>
 	<%= f.input :address, placeholder: 'Address' %>
-	<%= f.button :submit %>
+	<%= f.button :submit, :class => "btn btn-primary custom_btn_small" %>
 	<% end %>
 	<% else %>
 	<p>user not signed in</p>

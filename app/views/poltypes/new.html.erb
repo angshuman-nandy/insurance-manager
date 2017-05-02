@@ -1,1 +1,4 @@
-<%= render 'form' %>
+<h1 class="form-info"> new plan </h1>
+ <% @user = current_user %>
+   <% @u_detail = @user.detail %>
+<%= render "form" %>

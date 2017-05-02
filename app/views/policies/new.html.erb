@@ -1,8 +1,9 @@
-<%= @c_id %>
-<%= @p_id %>
+<% @c_id %>
+<% @p_id %>
 <% @company= Company.find(@c_id) %>
 <% @plan = Poltype.find(@p_id) %>
-<div class="container" style="max-width: 50%; align-self: center;">
+<h1 class="form-info">Add new policy</h1>
+<div class="container box-form">
 <%= simple_form_for @policy do |f| %>
 <% if @policy.errors.any? %>
     <div id="error_explanation" style="color: red;">
@@ -36,6 +37,6 @@
 	<%= f.input :poltype_id, input_html: {value: @p_id}, :readonly => true, :as => :hidden  %>
 	<%= f.input :policy_type, input_html: {value: @plan.name}, :readonly => true %>
 
-	<%= f.submit "create policy" %>
+	<%= f.submit "create policy", :class => "btn btn-primary custom_btn_small" %>
 <% end %>
 </div>

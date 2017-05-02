@@ -1,6 +1,10 @@
 class CompaniesController < ApplicationController
 	def index
+    if user_signed_in?
 		@companies= Company.all
+  else
+    redirect_to new_user_session_path
+  end
 	end
 	def show
 		
@@ -41,7 +45,13 @@ class CompaniesController < ApplicationController
 end
 def destroy
   @company = Company.find(params[:id])
+  @poltype_del = Poltype.find_by_company_id(@company.id)
+  @policy_del = Policy.find_by_company_id(@company.id)
+  if @policy_del!= nil && @poltype_del!= nil
+  @policy_del.destroy
+  @poltype_del.destroy
   @company.destroy
+end
  
   redirect_to companies_path, :notice => "company deleted"
 end

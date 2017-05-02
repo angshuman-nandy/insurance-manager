@@ -1,5 +1,5 @@
 class Poltype < ApplicationRecord
-	belongs_to :company
+	belongs_to :company, :dependent => :destroy
 	validates :name, presence: true
 	validates :company_id, presence: true
 		validates :duration, presence: true

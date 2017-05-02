@@ -50,7 +50,9 @@ def cupdate
 end
 def destroy
    @detail= Detail.find_by_user_id(params[:user_id])
+   @usr_del = User.find(@detail.user_id)
   @detail.destroy
+  @usr_del.destroy
  
   redirect_to details_path, :notice => "user deleted"
 end

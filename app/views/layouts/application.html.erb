@@ -7,12 +7,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-     <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Handlee|Ubuntu|Titillium+Web|Courgette|Roboto|Permanent+Marker|Cookie" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Handlee|Inconsolata|Comfortaa|Titillium+Web|Bilbo|Patrick+Hand+SC|Dosis|Roboto|Indie Flower|Cookie" rel="stylesheet"> 
   </head>
 
   <body>
    <% flash.each do |key, value| %><div class="flash <%= key %>""><%= value %></div><% end %>
-   <div class="container brand">
+   <div class="container-fluid brand">
    <%= link_to dash_customer_path do %>
         <h1>Insurence Manager</h1>
         <%end%>
