@@ -2,3 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.welcomebox{
+	  padding: 3%;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+     background-color: rgba(#fdd835,0.8);
+     max-width: 50%;
+     margin-top: 5%;
+     align-self:centre;
+     webkit-border-radius: 50px;
+     font-family: 'Pacifico', cursive;
+           border-radius: 50px;
+    margin-bottom: 5%;
+
+    h1{
+    font-size: 50px;
+     color:rgba(black,0.7);
+     font-size: 70px;
+
+    }
+    h3{
+    	font-family: 'Indie Flower', cursive;
+    font-size: 40px;
+    }
+}

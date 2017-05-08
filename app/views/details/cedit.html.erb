@@ -1,4 +1,4 @@
-<div class=container style="background-color: white;">
+<div class="container box-form">
 <% if user_signed_in? %>
 <% @user = current_user %>
   <%  @u_detail = @user.detail %>
@@ -30,7 +30,7 @@
   <% end %>
   <%= f.input :contact_number, input_html: {value: @detail.contact_number}, :label => "Contact Number"%>
   <%= f.input :address, input_html: {value: @detail.address}, :label => "Address"%>
-	<%= f.button :submit, 'update' %>
+	<%= f.button :submit, 'update', :class => "btn btn-primary custom_btn_small" %>
 	<% end %>
 	<% else %>
 	<p>user not signed in</p>

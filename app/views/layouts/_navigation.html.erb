@@ -19,10 +19,11 @@
         <li id="company_h" ><%= link_to "Companies", dash_company_handle_path%></li>
         <li id="plan_h" ><%= link_to "Plans", dash_poltype_handle_path%></li>
         <li id="user_h" > <%= link_to "Users", dash_user_handle_path%></li>
+        <li id="post_h" > <%= link_to "Posts", posts_path%></li>
         </ul>
          <ul class="nav navbar-nav navbar-right" style="text-align: center;">
            <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <%= @detail.first_name %> <%= @detail.last_name %>
+            <a class="dropdown-toggle style-name" data-toggle="dropdown" href="#" style="color:black;"> <%= @detail.first_name %> <%= @detail.last_name %>
             <span class="caret"></span></a>
             <ul class="dropdown-menu" style="text-align: center;">
               <li> <a href="#">edit</a></li>
@@ -65,6 +66,10 @@
   {
     if(actionName!= "new")
     $('#user_h').addClass("active");
+  }
+  if (controllerName=="posts")
+  {
+    $('#post_h').addClass("active");
   }
 </script>
 

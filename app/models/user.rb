@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-	has_one :detail
+	has_one :detail, :dependent => :destroy 
+	has_many :posts, :dependent => :destroy 
+	has_many :policy, :dependent => :destroy 
 	validates :email, presence: true
 	validates_uniqueness_of :email
 	validates_confirmation_of :password

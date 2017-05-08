@@ -5,8 +5,8 @@
   <% @pol=Policy.where(:user_id => @user.id) %>
   <% end %>
 <div class="container" >
-  <h2>all policies</h2>
-  <p>all the policies</p>            
+  <h2 class="form-info">Policies</h2>
+  <p class="text-style">this list displays all the available policies bought by user. this list is only for viewing, to buy a policy from a specific company , please visit <strong>Policy --> Add new policy</strong> </p><br><br>                 
   <table class="table table-responsive table-hover">
     <thead>
       <tr>
@@ -19,8 +19,6 @@
         <th>commission</th>
         <th>purchase date</th>
         <th>mature date</th>
-        <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -30,7 +28,9 @@
     <% @company=Company.find(i.company_id) %>
     <% @poltype=Poltype.find(i.poltype_id) %>
       <tr>
-      <td><%=@detail.first_name%> <%= @detail.last_name%></td>
+      <% @pol_id = i.id %>
+      <% @u_id = current_user.id %>
+       <td><%=@detail.first_name%> <%= @detail.last_name%></td>
         <td><%=@company.name%></td>
         <td><%=i.policy_type%></td>
         <td><%=i.description%></td>
@@ -44,7 +44,7 @@
          <td><%= link_to 'Destroy', policy_path(i),
               method: :delete,
               data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%></td>
-              <% end %>
+       <% end %>
       </tr>
 
       <% end %>
@@ -52,4 +52,4 @@
   </table>
   </div>
 
- 
+

@@ -18,20 +18,21 @@
       </ul>
     </div>
 <% end %>
+<% @date= Date.today() + @plan.duration.year %>
 <% if @u_detail.admin == true %>
 	<%= f.input :user_id,:collection => @alluserdetail,:label_method => :first_name,:value_method => :user_id,:label => "holder name"%>
 
 	<% else %>
 	<%= f.input :user_id, input_html: {value: @u_detail.user_id}, :readonly => true, :as => :hidden %>
 	<% end %>
-	<%= f.input :description, placeholder: 'description' %>
+	<%= f.input :description,  input_html: {value: @plan.description}, :readonly => true %>
 	<%= f.input :sum_insured, input_html: {value: @plan.sum_insured}, :readonly => true %>
 	<%= f.input :premium_amount, input_html: {value: @plan.premium_amount}, :readonly => true %>
 	<% @amt=@plan.premium_amount %>
 	<% @com= 0.2 * @amt %>
 	<%= f.input :commission, input_html: {value: @com}, :readonly => true %>
-	<%= f.input :purchase_date, label: "purchase date" %>
-	<%= f.input :mature_date, label: "mature date" %>
+	<%= f.input :purchase_date, label: "purchase date", :selected => Date.today, :readonly => true %>
+	<%= f.input :mature_date, label: "mature date", :selected => @date , :readonly => true %>
 	<%= f.input :premium_amount, input_html: {value: @plan.premium_amount}, :readonly => true %>
 	<%= f.input :company_id, input_html: {value: @c_id}, :readonly => true, :as => :hidden %>
 	<%= f.input :poltype_id, input_html: {value: @p_id}, :readonly => true, :as => :hidden  %>

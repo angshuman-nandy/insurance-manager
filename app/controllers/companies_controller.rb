@@ -14,6 +14,8 @@ class CompaniesController < ApplicationController
 		@company = Company.new
         @user = current_user
     @u_detail = @user.detail
+  else
+    redirect_to new_user_session_path
   end
 	end
 	def create
@@ -45,13 +47,18 @@ class CompaniesController < ApplicationController
 end
 def destroy
   @company = Company.find(params[:id])
-  @poltype_del = Poltype.find_by_company_id(@company.id)
-  @policy_del = Policy.find_by_company_id(@company.id)
+  @poltype_del = Poltype.where(company_id: @company.id)
+  @policy_del = Policy.where(company_id:  @company.id)
   if @policy_del!= nil && @poltype_del!= nil
-  @policy_del.destroy
-  @poltype_del.destroy
-  @company.destroy
+  @policy_del.each do |k|
+    k.destroy
+  end
+
+  @poltype_del.each do |i|
+    i.destroy
+  end
 end
+  @company.destroy
  
   redirect_to companies_path, :notice => "company deleted"
 end

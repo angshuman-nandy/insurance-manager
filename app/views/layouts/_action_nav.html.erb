@@ -6,22 +6,22 @@
    <div class="container action_stub" >
         <ul class="list-inline" >
         <% if controller.action_name == "company_handle" || controller.controller_name == "companies" %>
-            <li id="c_view_item"><%= link_to "view all companies",companies_path, :class => "btn btn-primary custom_btn"%></li>
+            <li id="c_view_item"><%= link_to "view all companies",companies_path, :class => "btn btn-primary custom_btn_action"%></li>
             <% if @ud.admin == true %>
-            <li id="c_add_item"><%= link_to "add new company", new_company_path, :class => "btn btn-primary custom_btn"%></li>
+            <li id="c_add_item"><%= link_to "add new company", new_company_path, :class => "btn btn-primary custom_btn_action"%></li>
             <% end %>
             <% end %>
          <% if controller.action_name == "policy_handle"|| controller.controller_name == "policies" %>
-         <li id="p_view_item"><%= link_to "view all policies",policies_path, :class => "btn btn-primary custom_btn"%></li>
-            <li id="p_add_item"><%= link_to "add new policy", policies_select_company_path, :class => "btn btn-primary custom_btn"%></li>
+         <li id="p_view_item"><%= link_to "view all policies",policies_path, :class => "btn btn-primary custom_btn_action"%></li>
+            <li id="p_add_item"><%= link_to "add new policy", policies_select_company_path, :class => "btn btn-primary custom_btn_action"%></li>
             <%end%>
             <% if controller.action_name == "user_handle" || controller.controller_name == "details" %>
-            <li id="u_view_item"><%= link_to "view all users",details_path, :class => "btn btn-primary custom_btn"%></li>
+            <li id="u_view_item"><%= link_to "view all users",details_path, :class => "btn btn-primary custom_btn_action"%></li>
             <% end %>
             <% if controller.action_name == "poltype_handle" || controller.controller_name == "poltypes" %>
-            <li id="pl_view_item"><%= link_to "view all plans",poltypes_path, :class => "btn btn-primary custom_btn"%></li>
+            <li id="pl_view_item"><%= link_to "view all plans",poltypes_path, :class => "btn btn-primary custom_btn_action"%></li>
             <% if @ud.admin == true %>
-            <li id="pl_add_item"><%= link_to "add new plan", new_poltype_path, :class => "btn btn-primary custom_btn"%></li>
+            <li id="pl_add_item"><%= link_to "add new plan", new_poltype_path, :class => "btn btn-primary custom_btn_action"%></li>
             <% end %>
             <% end %>
 			</ul>
@@ -29,10 +29,20 @@
         
  <p id="a_name"><%= controller.action_name %></p>
   <p id="c_name"><%= controller.controller_name %></p>
+  <p id="admin"><%= @ud.admin %></p>
   <script type="text/javascript">
 
   actionName = $('#a_name').text();
   controllerName = $('#c_name').text();
+  admin = $('#admin').text();
+
+  if(admin=="false")
+  {
+
+
+    $( "#p_view_item").find('a').html("my policies");
+  
+  }
   
   if (controllerName == "companies")
   {

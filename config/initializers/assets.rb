@@ -11,4 +11,6 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( dash.scss )
 Rails.application.config.assets.precompile += %w( devise.scss )
+Rails.application.config.assets.precompile += %w( posts.scss )
+Rails.application.config.assets.precompile += %w( policies.scss )
 Rails.application.config.assets.precompile += %w( dash.js )

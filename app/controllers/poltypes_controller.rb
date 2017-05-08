@@ -48,10 +48,6 @@ class PoltypesController < ApplicationController
 end
 def destroy
   @poltype = Poltype.find(params[:id])
-  @policy_del = Policy.find_by_poltype_id(@poltype.id)
-  if @policy_del!= nil
-  @policy_del.destroy
-	end
   @poltype.destroy
  
   redirect_to poltypes_path, :notice => "plan deleted"

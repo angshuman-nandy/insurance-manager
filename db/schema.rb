@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430202334) do
+ActiveRecord::Schema.define(version: 20170504120406) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 20170430202334) do
     t.index ["company_id"], name: "index_poltypes_on_company_id", using: :btree
   end
 
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.text     "text",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -84,4 +93,5 @@ ActiveRecord::Schema.define(version: 20170430202334) do
   add_foreign_key "policies", "poltypes"
   add_foreign_key "policies", "users"
   add_foreign_key "poltypes", "companies"
+  add_foreign_key "posts", "users"
 end

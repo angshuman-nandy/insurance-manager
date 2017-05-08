@@ -10,6 +10,7 @@ end
 gem 'rails', '~> 5.0.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
+gem 'record_tag_helper', '~> 1.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'

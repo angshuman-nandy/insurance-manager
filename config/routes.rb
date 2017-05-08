@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'dash/admin'
+   get 'dash/admin'
   get 'dash/customer'
   get 'dash/policy_handle'
   get 'dash/user_handle'
@@ -16,9 +16,8 @@ Rails.application.routes.draw do
   resources :poltypes
   resources :companies
   resources :policies
-
-  root to: 'home#index'
-
+  resources :posts
+  root to: "home#index"
   devise_for :users, controllers: { registrations: "registrations" }
 
 end

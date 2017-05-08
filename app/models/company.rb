@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-	has_many :poltype
-	has_many :policy 
+	has_many :poltype,:dependent => :destroy
+	has_many :policy, :dependent => :destroy 
 	validates :name, presence: true
 end

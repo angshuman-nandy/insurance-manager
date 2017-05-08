@@ -1,0 +1,28 @@
+<% @user= current_user.detail %>
+<%= div_for post do %>
+<div class="container post-box">
+<% if post.title== "" %>
+<%	post.title= "untitled" %>
+<% end %>
+  <h2><%= post.title%></h2>
+  <h3><%= post.text %></h3>
+  <% @ud = Detail.find_by_user_id(post.user_id) %>
+  <p>posted by: <%= @ud.first_name %> <%= @ud.last_name %></p>
+
+  <ul>
+<% if @user.admin==false && post.user_id == current_user.id %> 
+<%= link_to 'Destroy', post_path(post),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%>
+<% end %>
+<% if @user.admin==true %>
+ <%= link_to 'Destroy', post_path(post),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%>
+<% end %>
+
+</ul>
+<% end %>
+</div>
+
+<%= stylesheet_link_tag 'posts' %>

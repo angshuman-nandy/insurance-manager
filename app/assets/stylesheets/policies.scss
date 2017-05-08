@@ -1,3 +1,42 @@
 // Place all the styles related to the Policy controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.company-type-box {
+    padding: 4%;
+    margin: 2%;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
+     background-color: rgba(red,0.4);
+     height: 300px;
+     font-family: 'Comfortaa', cursive;
+     align-self:centre;
+     webkit-border-radius: 50px;
+           border-radius: 50px;
+           color: black;
+           font-weight: 600;
+}
+.company-type-box:hover{
+      background-color: rgba(red,0.8);
+      cursor: pointer;
+}
+.policy-type-box {
+    padding: 4%;
+    margin: 2%;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
+     background-color: rgba(green,0.4);
+     height: 400px;
+     font-family: 'Comfortaa', cursive;
+     align-self:centre;
+     webkit-border-radius: 50px;
+           border-radius: 50px;
+           color: black;
+           font-weight: 600;
+           strong{
+           font-weight: 900;
+           color: red;
+           }
+}
+.policy-type-box:hover{
+      background-color: rgba(green,0.8);
+      cursor: pointer;
+}

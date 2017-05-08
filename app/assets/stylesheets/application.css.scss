@@ -17,10 +17,24 @@
  *= require bootstrap
  */
 
+ .notice-display{
+    background-color: black;
+    color:white;
+    margin-bottom: 0;
+ }
+ body{
+ background-color: #dce775;
+ 
+ }
+.text-style{
+    font-family: 'Comfortaa', cursive;
+    font-size: 20px;
+}
 .brand{
-    padding-top: 15px;
+    padding-top: 10px;
     background-color: rgba(black,0.9);
-    padding-bottom: 30px;
+    padding-bottom: 20px;
+    width:100%;
     align-self: center;
     text-align: center;
     font-family: 'Bilbo', cursive;
@@ -93,6 +107,24 @@ h1{
     -webkit-border-radius: 5px;
            border-radius: 5px;
 }
+.custom_btn_action{
+ background-color: rgba(#aed581,0.9);
+    border: 0;
+    height: 50px;
+    width: auto;
+    color: rgba(black,0.9);
+    font-family: 'Inconsolata', monospace;
+    font-size: 25px;
+    z-index:1;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 15px;
+           border-radius: 15px;
+    
+}
+.custom_btn_action:hover,.custom_btn_small:hover{
+    background-color: rgba(#afb42b,0.8);
+    
+}
 .custom_btn_small{
  background-color: rgba(white,0.9);
     border: 0;
@@ -114,7 +146,7 @@ h1{
 
 .custom_nav{
     color: black;
-    background-color: white;
+    background-color: #827717;
     border:0;
 
 }
@@ -133,7 +165,7 @@ h1{
     color: rgba(black,0.6);
 }
 #extra_padding li:hover{
-    background-color: white;
+    background-color: #c0ca33;
     color:green;
 }
 
@@ -141,7 +173,7 @@ h1{
     font-family: 'cookie', cursive;
     font-size: 30px;
 }
-#cname, #con_name,#c_name,#a_name{
+#cname, #con_name,#c_name,#a_name, #admin{
     
     visibility: hidden;
 }
@@ -190,9 +222,17 @@ color: white
 table{
     font-family: 'Dosis', sans-serif;
     font-weight: bold;
+    background-color: white;
 }
 thead{
     background-color: black;
     color: white;
     font-weight: bolder;
+}
+.table-hover tbody tr:hover{
+    
+    color:red;
+}
+.style-name{
+    color:black;
 }
