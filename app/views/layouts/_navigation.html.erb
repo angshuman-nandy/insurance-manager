@@ -26,7 +26,7 @@
             <a class="dropdown-toggle style-name" data-toggle="dropdown" href="#" style="color:black;"> <%= @detail.first_name %> <%= @detail.last_name %>
             <span class="caret"></span></a>
             <ul class="dropdown-menu" style="text-align: center;">
-              <li> <a href="#">edit</a></li>
+              <li> <%= link_to "edit", details_cedit_path(:user_id => @detail.user_id)%></li>
               <li> <%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %></li>
             </ul>
            </li>

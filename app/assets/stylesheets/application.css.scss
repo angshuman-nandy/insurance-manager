@@ -236,3 +236,57 @@ thead{
 .style-name{
     color:black;
 }
+
+
+.show-box{
+    margin-bottom: 1%;
+    max-width: 90%;
+    padding: 5%;
+  font-family: 'Dosis', sans-serif;
+    align-self: center;
+      -webkit-border-radius: 50px;
+           border-radius: 50px;
+    background-color: rgba(238, 238, 238,0.5);
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
+      font-size: 25px;
+   text-align: center;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.list-box{
+      background-color: rgba(238, 238, 238,0.5);
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3);
+    padding-left: 1%;
+    padding-top: 1%;
+  
+}
+.row-head{
+    background-color: black;
+}
+.row-body{
+    background-color: white;
+}
+.list-box ul li{
+    font-family: 'Dosis', sans-serif;
+    font-size: 25px;
+   text-align: center;
+    padding-left: 4%;
+    padding-right: 4%;
+    margin: 0;
+    max-height: 100%;
+}
+.row-head ul li{
+    font-weight: bolder;
+    color:white;
+}
+.row-body ul li{
+    font-weight: 400;
+    color: black;
+}
+.row-body:hover{
+    cursor: grab;
+     background-color: rgba(238, 238, 238,0.8);
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.5);
+    
+}

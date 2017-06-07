@@ -9,7 +9,14 @@ class PoliciesController < ApplicationController
     end
   end
   def show
-    
+  
+  end
+  def display
+     if user_signed_in?
+     @policy = Policy.find_by_id(params[:id])
+  else
+    redirect_to new_user_session_path
+  end
   end
   def select_company
     if user_signed_in?

@@ -1,0 +1,27 @@
+ <% @user = current_user %>
+ <div class="container">
+ <%= link_to "back", policies_path,:class => "btn btn-primary custom_btn_small" %>
+    <%= link_to "new comment", new_comment_path(:id => @p_id),:class => "btn btn-primary custom_btn_small" %>
+ </div>
+
+<div class="container" >
+  <h2 class="form-info">Comments</h2>
+
+    <% @comments.each do |i| %>
+    <% @det= Detail.find_by_user_id(i.user) %>
+      <div class="container post-box">
+      <h3><%=i.body %></h3>
+        <p><%= @det.first_name %> <%= @det.last_name %></p>
+        
+      
+<%= link_to 'Destroy', comment_path(:id => i.id, :pid => @p_id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%>
+
+      </div>
+      <% end %>
+</div>
+
+
+
+<%= stylesheet_link_tag 'posts' %>

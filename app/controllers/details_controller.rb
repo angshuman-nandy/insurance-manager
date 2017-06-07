@@ -28,6 +28,16 @@ def cedit
 
   end
 end
+def display
+  if user_signed_in?
+    @detail= Detail.find_by_user_id(params[:user_id])
+    @user = current_user
+    @u_detail= @user.detail
+  else
+    redirect_to new_user_session_path
+  end
+  
+end
   def update
      @detail= Detail.find_by_user_id(params[:user_id])
       @detail.email = @detail.email

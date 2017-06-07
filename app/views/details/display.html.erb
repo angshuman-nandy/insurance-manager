@@ -1,0 +1,27 @@
+<div class="container show-box">
+	<p><strong>Name :</strong><%= @detail.first_name%> <%=@detail.last_name%></p><br>
+
+	<p><strong>address :</strong><%= @detail.address%></p><br>
+	<p><strong>email :</strong><%= @detail.email%></p><br>
+	<p><strong>user type :</strong>
+	<% if@detail.admin==true %>
+		<%= "admin" %>
+	<% else%>
+		<%= "customer" %>
+	<% end %>
+	</p><br>
+	<p><strong>contact number :</strong><%= @detail.contact_number %></p><br>
+	 <% if @u_detail.admin == true %>
+          <%= link_to "edit", details_cedit_path(:user_id => @detail.user_id),:class => "btn btn-primary custom_btn_small" %><br>
+          <%= link_to 'Destroy', details_cdestroy_path(:user_id => @detail.user_id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%><br>
+              <% if @detail.admin == false %>
+         <%= link_to "make admin", details_make_admin_path(:user_id => @detail.user_id),:class => "btn btn-primary custom_btn_small" %><br>
+         <%= link_to "back", details_path,:class => "btn btn-primary custom_btn_small" %>
+
+         <%end%>
+         <%end%>
+
+
+</div>

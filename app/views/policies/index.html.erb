@@ -13,12 +13,11 @@
         <th>holders name</th>
         <th>company name</th>
         <th>policy type</th>
-        <th>description</th>
         <th>sum insured</th>
         <th>premium amount</th>
         <th>commission</th>
-        <th>purchase date</th>
-        <th>mature date</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -33,18 +32,11 @@
        <td><%=@detail.first_name%> <%= @detail.last_name%></td>
         <td><%=@company.name%></td>
         <td><%=i.policy_type%></td>
-        <td><%=i.description%></td>
         <td><%=i.sum_insured%></td>
         <td><%=i.premium_amount%></td>
         <td><%=i.commission%></td>
-        <td><%=i.purchase_date%></td>
-        <td><%=i.mature_date%></td>
-        <% if @u_detail.admin == true %>
-        <td><%= link_to "edit", edit_policy_path(i), :class => "btn btn-primary custom_btn_small" %></td>
-         <td><%= link_to 'Destroy', policy_path(i),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%></td>
-       <% end %>
+         <td><%= link_to "display", policies_display_path(:id => i.id),:class => "btn btn-primary custom_btn_small" %></td>
+          <td><%= link_to "comments", comments_path(:id => i.id),:class => "btn btn-primary custom_btn_small" %></td>
       </tr>
 
       <% end %>

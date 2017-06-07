@@ -12,11 +12,15 @@ Rails.application.routes.draw do
   get 'details/cdestroy'
   get 'details/cshow'
   get 'details/cupdate'
+  get 'details/display'
+  get 'policies/display'
+  get 'companies/companyShow'
   resources :details
   resources :poltypes
   resources :companies
   resources :policies
   resources :posts
+  resources :comments
   root to: "home#index"
   devise_for :users, controllers: { registrations: "registrations" }
 

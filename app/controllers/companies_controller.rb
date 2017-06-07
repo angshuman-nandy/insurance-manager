@@ -6,6 +6,16 @@ class CompaniesController < ApplicationController
     redirect_to new_user_session_path
   end
 	end
+
+def companyShow
+  if user_signed_in?
+  @company = Company.find_by_id(params[:id])
+else
+  redirect_to new_user_session_path
+end
+ 
+end
+
 	def show
 		
 	end

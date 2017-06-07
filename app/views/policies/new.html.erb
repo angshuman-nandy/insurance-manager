@@ -2,6 +2,9 @@
 <% @p_id %>
 <% @company= Company.find(@c_id) %>
 <% @plan = Poltype.find(@p_id) %>
+
+<p id="pol_duration"><%= @plan.duration %></p>
+<p id="pol_ins_amt"><%= @plan.sum_insured %></p>
 <h1 class="form-info">Add new policy</h1>
 <div class="container box-form">
 <%= simple_form_for @policy do |f| %>
@@ -25,15 +28,13 @@
 	<% else %>
 	<%= f.input :user_id, input_html: {value: @u_detail.user_id}, :readonly => true, :as => :hidden %>
 	<% end %>
-	<%= f.input :description,  input_html: {value: @plan.description}, :readonly => true %>
-	<%= f.input :sum_insured, input_html: {value: @plan.sum_insured}, :readonly => true %>
-	<%= f.input :premium_amount, input_html: {value: @plan.premium_amount}, :readonly => true %>
-	<% @amt=@plan.premium_amount %>
-	<% @com= 0.2 * @amt %>
-	<%= f.input :commission, input_html: {value: @com}, :readonly => true %>
+
+	<%= f.input :description,  input_html: {value: @plan.description}, :readonly => true, :as => :hidden %>
+	<%= f.input :sum_insured, input_html: {id: 'sum_ins', value: @plan.sum_insured, min: '1000', step: '15000', max: @plan.sum_insured} %>
+	<%= f.input :premium_amount, input_html: {id: 'prem_amt'}, :readonly => true %>
+	<%= f.input :commission, input_html: {id: 'com'}, :readonly => true %>
 	<%= f.input :purchase_date, label: "purchase date", :selected => Date.today, :readonly => true %>
 	<%= f.input :mature_date, label: "mature date", :selected => @date , :readonly => true %>
-	<%= f.input :premium_amount, input_html: {value: @plan.premium_amount}, :readonly => true %>
 	<%= f.input :company_id, input_html: {value: @c_id}, :readonly => true, :as => :hidden %>
 	<%= f.input :poltype_id, input_html: {value: @p_id}, :readonly => true, :as => :hidden  %>
 	<%= f.input :policy_type, input_html: {value: @plan.name}, :readonly => true %>
@@ -41,3 +42,35 @@
 	<%= f.submit "create policy", :class => "btn btn-primary custom_btn_small" %>
 <% end %>
 </div>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+   v = $('#pol_ins_amt').text();
+   dur = $('#pol_duration').text();
+     if(dur!=0)
+    var total = v/dur;
+    var com = 0.2 * total;
+    $("#prem_amt").val(total);
+    $("#com").val(com)
+
+});
+	$("#sum_ins").change(function(){
+    dur = $('#pol_duration').text();
+
+    var price = Number($(this).val());
+    if(dur!=0)
+    var total = (price)/dur;
+    var com = 0.2 * total;
+    $("#prem_amt").val(total);
+    $("#com").val(com)
+});
+
+
+
+function updatePrice(val)
+{
+    $("#sum_ins").val(val);
+    $("#sum_ins").trigger('change');
+}
+
+</script>
