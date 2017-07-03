@@ -19,7 +19,6 @@
         <li id="company_h" ><%= link_to "Companies", dash_company_handle_path%></li>
         <li id="plan_h" ><%= link_to "Plans", dash_poltype_handle_path%></li>
         <li id="user_h" > <%= link_to "Users", dash_user_handle_path%></li>
-        <li id="post_h" > <%= link_to "Posts", posts_path%></li>
         </ul>
          <ul class="nav navbar-nav navbar-right" style="text-align: center;">
            <li class="dropdown">
@@ -27,7 +26,9 @@
             <span class="caret"></span></a>
             <ul class="dropdown-menu" style="text-align: center;">
               <li> <%= link_to "edit", details_cedit_path(:user_id => @detail.user_id)%></li>
-              <li> <%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %></li>
+              <li><%= link_to "Log out", logout_path, method: :delete %></li>
+
+
             </ul>
            </li>
            </ul>
@@ -66,10 +67,6 @@
   {
     if(actionName!= "new")
     $('#user_h').addClass("active");
-  }
-  if (controllerName=="posts")
-  {
-    $('#post_h').addClass("active");
   }
 </script>
 
