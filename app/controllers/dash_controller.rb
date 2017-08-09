@@ -20,7 +20,7 @@ class DashController < ApplicationController
 			redirect_to dash_admin_path
 		end
 	else
-		redirect_to new_user_session_path
+		redirect_to login_path
 	end
 
 	end
