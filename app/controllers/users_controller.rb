@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- def show
+  def show
     @user = User.find(params[:id])
   end
 
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-       log_in @user
+      log_in @user
     	redirect_to new_detail_path
     else
       render 'new'

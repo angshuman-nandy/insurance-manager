@@ -1,14 +1,14 @@
 <% @plan=Poltype.where(:company_id => @company.id) %>
 <div class="container">
-<h1 class="form-info">all the plans of the company: <%= @company.name %> </h1>
-<% @plan.each do |i| %>
-	<div class="container show-box">
- 		<h2><%=i.name%></h2>
-	    <p><strong>description:</strong> <%=i.description%> </p><br>
-	    <p><strong>duration:</strong> <%=i.duration%> years <br></p>
-	    <p><strong>Insured Amount:</strong> <%=i.sum_insured%> INR <br></p>
-	    <p><strong>Premium Amount:</strong> <%=i.premium_amount%> INR<br></p>
+  <h1 class="form-info">all the plans of the company: <%= @company.name %> </h1>
+  <% @plan.each do |i| %>
+    <div class="container show-box">
+      <h2><%=i.name%></h2>
+      <p><strong>description:</strong> <%=i.description%> </p><br>
+      <p><strong>duration:</strong> <%=i.duration%> years <br></p>
+      <p><strong>Insured Amount:</strong> <%=i.sum_insured%> INR <br></p>
+      <p><strong>Premium Amount:</strong> <%=i.premium_amount%> INR<br></p>
 
-</div>
-<% end %>
+    </div>
+  <% end %>
 </div>

@@ -1,8 +1,8 @@
 <div class="container box-form">
-<%= simple_form_for @comment do |f| %>
-<%= f.input :body, placeholder: "comment" %>
-<%= f.input :user, input_html: {value: current_user.id}, :readonly => true, :as => :hidden %>
-<%= f.input :policy_id, input_html: {value: @pol_id}, :readonly => true, :as => :hidden %>
-<%= f.submit "submit" , :class => "btn btn-primary custom_btn_small"%>
-	<% end %>
-	</div>
+  <%= simple_form_for @comment do |f| %>
+    <%= f.input :body, placeholder: "comment" %>
+    <%= f.input :user, input_html: {value: current_user.id}, :readonly => true, :as => :hidden %>
+    <%= f.input :policy_id, input_html: {value: @pol_id}, :readonly => true, :as => :hidden %>
+    <%= f.submit "submit" , :class => "btn btn-primary custom_btn_small"%>
+  <% end %>
+</div>

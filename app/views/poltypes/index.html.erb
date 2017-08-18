@@ -1,5 +1,5 @@
- <% @user = current_user %>
-   <% @u_detail = @user.detail %>
+<% @user = current_user %>
+<% @u_detail = @user.detail %>
 <div class="container" >
   <h2>Plans</h2>
   <p>all the available plans of listed companies</p>            
@@ -18,22 +18,22 @@
     </thead>
     <tbody>
     <% @poltypes.each do |i| %>
-      <tr>
-      <% @company= Company.find(i.company_id) %>
+        <tr>
+        <% @company= Company.find(i.company_id) %>
         <td><%= @company.name%></td>
         <td><%=i.name%></td>
         <td><%=i.description%></td>
         <td><%=i.duration%></td>
         <td><%=i.sum_insured%></td>
         <td><%=i.premium_amount%></td>
-       <% if @u_detail.admin == true %>
+        <% if @u_detail.admin == true %>
         <td><%= link_to "edit", edit_poltype_path(i), :class => "btn btn-primary custom_btn_small" %></td>
-         <td><%= link_to 'Destroy', poltype_path(i),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%></td>
-              <% end %>
-      </tr>
+        <td><%= link_to 'Destroy', poltype_path(i),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%></td>
       <% end %>
+    </tr>
+    <% end %>
     </tbody>
   </table>
-  </div>
+</div>

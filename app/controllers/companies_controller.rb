@@ -1,77 +1,78 @@
 class CompaniesController < ApplicationController
-	def index
+  def index
     if user_signed_in?
-		@companies= Company.all
-  else
-    redirect_to new_user_session_path
-  end
+		  @companies= Company.all
+    else
+      redirect_to new_user_session_path
+    end
 	end
 
-def companyShow
-  if user_signed_in?
-  @company = Company.find_by_id(params[:id])
-else
-  redirect_to new_user_session_path
-end
+  def companyShow
+    if user_signed_in?
+      @company = Company.find_by_id(params[:id])
+    else
+      redirect_to new_user_session_path
+    end
  
-end
+  end
 
 	def show
-		
 	end
 	def new
     if user_signed_in?
-		@company = Company.new
-        @user = current_user
-    @u_detail = @user.detail
-  else
-    redirect_to new_user_session_path
-  end
+		  @company = Company.new
+      @user = current_user
+      @u_detail = @user.detail
+    else
+      redirect_to new_user_session_path
+    end
 	end
 	def create
 		 @company= Company.new(company_params)
 		 if @company.save
   		redirect_to dash_admin_path
-  		else
+  	else
   			render 'new'
-  		end
+  	end
 	end
- def edit
-     if user_signed_in?
-    @company = Company.find(params[:id])
-    @user = current_user
-    @u_detail = @user.detail
-  else
-    redirect_to new_user_session_path
-
-  end
+  def edit
+    if user_signed_in?
+      @company = Company.find(params[:id])
+      @user = current_user
+      @u_detail = @user.detail
+    else
+      redirect_to new_user_session_path
+    end
     
   end
+
 	def update
-     @company = Company.find(params[:id])
-  if @company.update(company_params)
-   redirect_to dash_admin_path, :notice => "company edited!!" 
-  else
-    render 'edit'
-  end
-end
-def destroy
-  @company = Company.find(params[:id])
-  @poltype_del = Poltype.where(company_id: @company.id)
-  @policy_del = Policy.where(company_id:  @company.id)
-  if @policy_del!= nil && @poltype_del!= nil
-  @policy_del.each do |k|
-    k.destroy
+    @company = Company.find(params[:id])
+    if @company.update(company_params)
+      redirect_to dash_admin_path, :notice => "company edited!!" 
+    else
+      render 'edit'
+    end
   end
 
-  @poltype_del.each do |i|
-    i.destroy
-  end
-end
-  @company.destroy
+  def destroy
+    @company = Company.find(params[:id])
+    @poltype_del = Poltype.where(company_id: @company.id)
+    @policy_del = Policy.where(company_id:  @company.id)
+    if @policy_del!= nil && @poltype_del!= nil
+      @policy_del.each do |k|
+        k.destroy
+      end
+
+      @poltype_del.each do |i|
+      i.destroy
+      end
+    end
+    @company.destroy
  
-  redirect_to companies_path, :notice => "company deleted"
-end
+    redirect_to companies_path, :notice => "company deleted"
+  end
+
 
  private
 

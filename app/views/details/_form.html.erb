@@ -1,35 +1,35 @@
 <div class="container box-form">
-<% if user_signed_in? %>
-<% @user=current_user %>
-<%	@whoadmins = Detail.where(:admin => true )%>
+  <% if user_signed_in? %>
+    <% @user=current_user %>
+    <%	@whoadmins = Detail.where(:admin => true )%>
 
-<% @ary= Array.new %>
-<% @whoadmins.each do |i| %>
-<% @ary.push(i.email) %>
-<% end %>
+    <% @ary= Array.new %>
+    <% @whoadmins.each do |i| %>
+      <% @ary.push(i.email) %>
+    <% end %>
 
-<%= simple_form_for @detail do |f| %>
-<% if @detail.errors.any? %>
-    <div id="error_explanation" style="color: red;">
-      <h2>
-        <%= pluralize(@detail.errors.count, "error") %> prohibited
-        this detail from being saved:
-      </h2>
-      <ul>
-        <% @detail.errors.full_messages.each do |msg| %>
+    <%= simple_form_for @detail do |f| %>
+      <% if @detail.errors.any? %>
+        <div id="error_explanation" style="color: red;">
+          <h2>
+          <%= pluralize(@detail.errors.count, "error") %> prohibited
+          this detail from being saved:
+          </h2>
+          <ul>
+          <% @detail.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.input :first_name, placeholder: 'First Name' %>
+      <%= f.input :last_name, placeholder: 'Last Name' %>
+      <%= f.input :admin, input_html: {value: 0}, :readonly => true,:as => :hidden %>
+      <%= f.input :contact_number, placeholder: 'Contact Number'%>
+      <%= f.input :address, placeholder: 'Address' %>
+      <%= f.button :submit, :class => "btn btn-primary custom_btn_small" %>
+    <% end %>
+  <% else %>
+    <p>user not signed in</p>
   <% end %>
-	<%= f.input :first_name, placeholder: 'First Name' %>
-	<%= f.input :last_name, placeholder: 'Last Name' %>
-	<%= f.input :admin, input_html: {value: 0}, :readonly => true,:as => :hidden %>
-	<%= f.input :contact_number, placeholder: 'Contact Number'%>
-	<%= f.input :address, placeholder: 'Address' %>
-	<%= f.button :submit, :class => "btn btn-primary custom_btn_small" %>
-	<% end %>
-	<% else %>
-	<p>user not signed in</p>
-	<% end %>
-	</div>
+</div>

@@ -2,46 +2,44 @@
 <% @a = controller.action_name %>
 <% @ac = @c + @a %>
 <% if user_signed_in? && @ac != "detailsnew" && @ac != "detailscreate"%>
-<% @user=current_user%>
-<% @detail = @user.detail %>
-     <nav class="navbar navbar-default custom_nav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+  <% @user=current_user%>
+  <% @detail = @user.detail %>
+  <nav class="navbar navbar-default custom_nav">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav " id="extra_padding">
-      <li id="policy_h"><%= link_to "Policies", dash_policy_handle_path%></li>
-        <li id="company_h" ><%= link_to "Companies", dash_company_handle_path%></li>
-        <li id="plan_h" ><%= link_to "Plans", dash_poltype_handle_path%></li>
-        <li id="user_h" > <%= link_to "Users", dash_user_handle_path%></li>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav " id="extra_padding">
+          <li id="policy_h"><%= link_to "Policies", dash_policy_handle_path%></li>
+          <li id="company_h" ><%= link_to "Companies", dash_company_handle_path%></li>
+          <li id="plan_h" ><%= link_to "Plans", dash_poltype_handle_path%></li>
+          <li id="user_h" > <%= link_to "Users", dash_user_handle_path%></li>
         </ul>
-         <ul class="nav navbar-nav navbar-right" style="text-align: center;">
-           <li class="dropdown">
-            <a class="dropdown-toggle style-name" data-toggle="dropdown" href="#" style="color:black;"> <%= @detail.first_name %> <%= @detail.last_name %>
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu" style="text-align: center;">
-              <li> <%= link_to "edit", details_cedit_path(:user_id => @detail.user_id)%></li>
-              <li><%= link_to "Log out", logout_path, method: :delete %></li>
+        <ul class="nav navbar-nav navbar-right" style="text-align: center;">
+          <li class="dropdown">
+          <a class="dropdown-toggle style-name" data-toggle="dropdown" href="#" style="color:black;"> <%= @detail.first_name %> <%= @detail.last_name %>
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu" style="text-align: center;">
+          <li> <%= link_to "edit", details_cedit_path(:user_id => @detail.user_id)%></li>
+          <li><%= link_to "Log out", logout_path, method: :delete %></li>
 
 
-            </ul>
-           </li>
-           </ul>
-        </div>
-        </div>
-       
-        </div>
-        </nav>
+          </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <p id="cname"><%= controller.action_name %></p>
   <p id="con_name"><%= controller.controller_name %></p>
 <% end %>
 
- <%= stylesheet_link_tag 'dash' %>
+<%= stylesheet_link_tag 'dash' %>
 <%= javascript_tag 'dash' %>
 
 

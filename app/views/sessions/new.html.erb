@@ -1,11 +1,11 @@
 <div class="container">
   <div class="rows">
     <div class="col-md-7 col-sm-6 col-xs-12">
-     <div class="inner cover" id="cover">
-       <h1 class="cover-heading">Its Simple, Its Hastlefree</h1>
-       <p class="lead">Manage your insurence policies. Buy, edit and view all your policies. Forget all the hastle of keeping track of poicies and missing premium dates. manage your policies better </p>
-     </div>
-     </div>
+      <div class="inner cover" id="cover">
+        <h1 class="cover-heading">Its Simple, Its Hastlefree</h1>
+        <p class="lead">Manage your insurence policies. Buy, edit and view all your policies. Forget all the hastle of keeping track of poicies and missing premium dates. manage your policies better </p>
+      </div>
+    </div>
     <div class="col-md-4 col-sm-6 col-xs-12 box login_form">
       <h2>Log in</h2>
       <%= simple_form_for(:session, url: login_path) do |f| %>
@@ -18,7 +18,7 @@
         </div>
 
       <% end %>
-     <%= link_to "sign up", new_user_path, :class => "login_button" %>
+      <%= link_to "sign up", new_user_path, :class => "login_button" %>
     </div>
   </div>
 </div>

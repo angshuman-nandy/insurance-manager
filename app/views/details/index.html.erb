@@ -1,24 +1,24 @@
- <% @user = current_user %>
-   <% @u_detail = @user.detail %>
+<% @user = current_user %>
+<% @u_detail = @user.detail %>
 <div class="container"  >
   <h2 class="form-info">all users</h2>
   <p class="text-style">this list displays all the users</p><br><br>                   
   <table class="table table-hover table-responsive">
     <thead class="thead-inverse">
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th></th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th></th>
       </tr>
     </thead>
     <tbody>
-    <% @details.each do |i| %>
-      <tr>
+      <% @details.each do |i| %>
+        <tr>
         <td><%=i.first_name%></td>
         <td><%=i.last_name%></td>
         <td><%= link_to "display", details_display_path(:user_id => i.user_id),:class => "btn btn-primary custom_btn_small" %></td>
-      </tr>
-       <% end %>
+        </tr>
+      <% end %>
     </tbody>
   </table>
-  </div>
+</div>

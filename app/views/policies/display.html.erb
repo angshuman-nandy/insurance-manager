@@ -1,24 +1,24 @@
 <% @usrd = Detail.find_by_user_id(current_user.id) %>
 <% @usr=User.find(@policy.user_id) %>
-    <% @ud= @usr.detail %>
+<% @ud= @usr.detail %>
 <% @com = Company.find(@policy.company_id) %>
 <% @plan = Poltype.find(@policy.poltype_id) %>
 <div class="container show-box">
-	<p><strong>Holder's Name :</strong><%= @ud.first_name%> <%=@ud.last_name%></p><br>
-	<p><strong>Company Name :</strong><%= @com.name%></p><br>
-	<p><strong>policy Type :</strong><%= @policy.policy_type%></p><br>
-	<p><strong>Description :</strong><%= @policy.description%></p><br>
-	<p><strong>Sum insured :</strong><%= @policy.sum_insured%></p><br>
-	<p><strong>Premium amount :</strong><%= @policy.premium_amount%></p><br>
-	<p><strong>Commission :</strong><%= @policy.commission%></p><br>
-	<p><strong>Purchase date :</strong><%= @policy.purchase_date%></p><br>
-	<p><strong>Mature date :</strong><%= @policy.mature_date%></p><br>
-	<%= link_to "back", policies_path,:class => "btn btn-primary custom_btn_small" %>
-	 <% if @usrd.admin == true %>
-        <td><%= link_to "edit", edit_policy_path(@policy), :class => "btn btn-primary custom_btn_small" %></td>
-         <td><%= link_to 'Destroy', policy_path(@policy),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%></td>
-       <% end %>
+  <p><strong>Holder's Name :</strong><%= @ud.first_name%> <%=@ud.last_name%></p><br>
+  <p><strong>Company Name :</strong><%= @com.name%></p><br>
+  <p><strong>policy Type :</strong><%= @policy.policy_type%></p><br>
+  <p><strong>Description :</strong><%= @policy.description%></p><br>
+  <p><strong>Sum insured :</strong><%= @policy.sum_insured%></p><br>
+  <p><strong>Premium amount :</strong><%= @policy.premium_amount%></p><br>
+  <p><strong>Commission :</strong><%= @policy.commission%></p><br>
+  <p><strong>Purchase date :</strong><%= @policy.purchase_date%></p><br>
+  <p><strong>Mature date :</strong><%= @policy.mature_date%></p><br>
+  <%= link_to "back", policies_path,:class => "btn btn-primary custom_btn_small" %>
+  <% if @usrd.admin == true %>
+    <td><%= link_to "edit", edit_policy_path(@policy), :class => "btn btn-primary custom_btn_small" %></td>
+    <td><%= link_to 'Destroy', policy_path(@policy),
+    method: :delete,
+    data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%></td>
+  <% end %>
 </div>
 
