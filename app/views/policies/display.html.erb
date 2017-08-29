@@ -1,5 +1,5 @@
 <div class="container">
-  <%= link_to "back", companies_path,:class => "btn btn-primary custom_btn_small" %>
+  <%= link_to "back", policies_path,:class => "btn btn-primary custom_btn_small" %>
 </div>
 <% @usrd = Detail.find_by_user_id(current_user.id) %>
 <% @usr=User.find(@policy.user_id) %>
