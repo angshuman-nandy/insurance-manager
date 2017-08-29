@@ -16,9 +16,19 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav " id="extra_padding">
           <li id="policy_h"><%= link_to "Policies", dash_policy_handle_path%></li>
-          <li id="company_h" ><%= link_to "Companies", dash_company_handle_path%></li>
-          <li id="plan_h" ><%= link_to "Plans", dash_poltype_handle_path%></li>
-          <li id="user_h" > <%= link_to "Users", dash_user_handle_path%></li>
+          <% if(@detail.admin==true) %>
+            <li id="company_h" ><%= link_to "Companies", dash_company_handle_path%></li>
+          <% else %>
+            <li id="company_h" ><%= link_to "Companies", companies_path%></li>
+          <% end %>
+          <% if(@detail.admin==true) %>
+            <li id="plan_h" ><%= link_to "Plans", dash_poltype_handle_path%></li>
+          <% else %>
+            <li id="plan_h" ><%= link_to "Plans", poltypes_path%></li>
+          <% end %>
+          <% if(@detail.admin==true) %>
+            <li id="user_h" > <%= link_to "Users", dash_user_handle_path%></li>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right" style="text-align: center;">
           <li class="dropdown">

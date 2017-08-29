@@ -1,16 +1,24 @@
-<div class="container">
-  <h1 class="form-info">Step 1:   Select a Company</h1>
-  <div class="rows">
-    <% @allcompany.each do |i| %>
-    <%= link_to policies_select_plan_path(:company_id => i.id) do %>
-    <div class="col-md-5 company-type-box" >
-      <h2><%=i.name%></h2>
-      <br>description: <%=i.description%> <br>
+<% if(@allcompany.count!=0) %>
+  <div class="container">
+    <h1 class="form-info">Step 1:   Select a Company</h1>
+    <div class="rows">
+      <% @allcompany.each do |i| %>
+      <%= link_to policies_select_plan_path(:company_id => i.id) do %>
+      <div class="col-md-5 company-type-box" >
+        <h2><%=i.name%></h2>
+        <br>description: <%=i.description%> <br>
 
+      </div>
+      <% end %>
+      <% end %>
     </div>
-    <% end %>
-    <% end %>
   </div>
-</div>
+<% else %>
+  <div class="container">
+    <h1 class="form-info">no companies to display. please come back later</h1>
+    
+  </div>
+<% end %>
+
 
 <%= stylesheet_link_tag 'policies' %>

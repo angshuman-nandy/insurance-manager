@@ -1,9 +1,17 @@
-<% @det = current_user.detail %>
-<div class="container welcomebox">
-  <h1>welcome</h1> <h2><%= @det.first_name%> <%= @det.last_name%> </h2>
-  <h3>you are admin</h3><br>
-  <h3> you can edit/add/delete/view all the companies,policies,plans </h3>
-  <h3> you can edit and delete users</h3>
-  <h3> you can delete posts by any user</h3>
+<% @u_id = current_user.id %>
+<% @policies = Policy.where(:user_id => @u_id)%>
 
+<% @det = current_user.detail %>
+<div class="container">
+  <div class="rows">
+    <div class ="col-md-12 col-sm-12 col-xs-12 welcomebox">
+      <h1>welcome</h1> <h2><%= @det.first_name%> <%= @det.last_name%> </h2>
+      <h3>you have <%= pluralize(@policies.count, "policy") %> <br> you can view and add policies from <strong>Policies</strong> tab </h3><br>
+      <h3>There are <%= pluralize(Company.all.count,"company") %> <br> you can view/add/edit/remove them from the <strong>Companies</strong> tab </h3>
+       <h3>There are <%= pluralize(Poltype.all.count,"plan") %> <br> you can view/add/edit/remove them from the <strong>Plans</strong> tab </h3>
+      <h3>There are <%= pluralize(User.all.count,"User") %> <br> you can view/add/edit/remove them from the <strong>Users</strong> tab </h3>
+    </div>
+  </div>
 </div>
+
+ 

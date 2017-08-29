@@ -1,39 +1,48 @@
 <% @user = current_user %>
 <% @u_detail = @user.detail %>
-<div class="container" >
-  <h2>Plans</h2>
-  <p>all the available plans of listed companies</p>            
-  <table class="table table-hover table-responsive">
-    <thead class="thead-inverse">
-      <tr>
-        <th>Company Name</th>
-        <th>policy type</th>
-        <th>description</th>
-        <th>duration</th>
-        <th>insured amount</th>
-        <th>premium amount</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @poltypes.each do |i| %>
+<% if (@poltypes.count!=0) %>
+
+  <div class="container" >
+    <h2 class="form-info">Plans</h2>
+    <p class="text-style">all the available plans of listed companies</p>            
+    <table class="table table-hover table-responsive">
+      <thead class="thead-inverse">
         <tr>
-        <% @company= Company.find(i.company_id) %>
-        <td><%= @company.name%></td>
-        <td><%=i.name%></td>
-        <td><%=i.description%></td>
-        <td><%=i.duration%></td>
-        <td><%=i.sum_insured%></td>
-        <td><%=i.premium_amount%></td>
-        <% if @u_detail.admin == true %>
-        <td><%= link_to "edit", edit_poltype_path(i), :class => "btn btn-primary custom_btn_small" %></td>
-        <td><%= link_to 'Destroy', poltype_path(i),
-        method: :delete,
-        data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%></td>
+          <th>Company Name</th>
+          <th>policy type</th>
+          <th>description</th>
+          <th>duration</th>
+          <th>insured amount</th>
+          <th>premium amount</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @poltypes.each do |i| %>
+          <tr>
+          <% @company= Company.find(i.company_id) %>
+          <td><%= @company.name%></td>
+          <td><%=i.name%></td>
+          <td><%=i.description%></td>
+          <td><%=i.duration%></td>
+          <td><%=i.sum_insured%></td>
+          <td><%=i.premium_amount%></td>
+          <td> <%= link_to "buy", new_policy_path(:company_id => i.company_id,:poltype_id => i.id),:class => "btn btn-primary custom_btn_small" %><td>
+          <% if @u_detail.admin == true %>
+          <td><%= link_to "edit", edit_poltype_path(i), :class => "btn btn-primary custom_btn_small" %></td>
+          <td><%= link_to 'Destroy', poltype_path(i),
+          method: :delete,
+          data: { confirm: 'Are you sure?' } , :class => "btn btn-primary custom_btn_small"%></td>
+        <% end %>
+      </tr>
       <% end %>
-    </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+   <div class="container" >
+    <h2 class="form-info">no plans available</h2>
+    <p class="text-style">please come back later</p><br><br>            
+  </div>
+<% end %>

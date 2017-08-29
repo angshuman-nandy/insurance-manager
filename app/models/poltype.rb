@@ -4,6 +4,6 @@ class Poltype < ApplicationRecord
 	validates :name, presence: true
 	validates :company_id, presence: true
 	validates :duration, presence: true
-	validates :premium_amount, presence: true
-	validates :sum_insured, presence: true
+	validates :premium_amount, presence: true, :numericality => {:only_integer => true}
+	validates :sum_insured, presence: true, :numericality => {:only_integer => true}
 end

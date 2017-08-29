@@ -3,8 +3,8 @@
 <% @company= Company.find(@c_id) %>
 <% @plan = Poltype.find(@p_id) %>
 
-<p id="pol_duration"><%= @plan.duration %></p>
-<p id="pol_ins_amt"><%= @plan.sum_insured %></p>
+<p id="pol_duration" class="hidden"><%= @plan.duration %></p>
+<p id="pol_ins_amt" class="hidden"><%= @plan.sum_insured %></p>
 <h1 class="form-info">Add new policy</h1>
 <div class="container box-form">
   <%= simple_form_for @policy do |f| %>
@@ -48,8 +48,8 @@ $( document ).ready(function() {
    v = $('#pol_ins_amt').text();
    dur = $('#pol_duration').text();
      if(dur!=0)
-    var total = v/dur;
-    var com = 0.2 * total;
+    var total = parseInt(v/dur);
+    var com = parseInt(0.2 * total);
     $("#prem_amt").val(total);
     $("#com").val(com)
 
@@ -59,8 +59,8 @@ $( document ).ready(function() {
 
     var price = Number($(this).val());
     if(dur!=0)
-    var total = (price)/dur;
-    var com = 0.2 * total;
+    var total = parseInt((price)/dur);
+    var com = parseInt(0.2 * total);
     $("#prem_amt").val(total);
     $("#com").val(com)
 });

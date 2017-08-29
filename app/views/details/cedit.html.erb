@@ -2,9 +2,6 @@
   <% if user_signed_in? %>
     <% @user = current_user %>
     <%  @u_detail = @user.detail %>
-    <% if @u_detail.admin != true %>
-      <% @detail = Detail.find_by_user_id(current_user.id) %>
-    <% end %>
     <%= simple_form_for @detail, :url => details_cupdate_path(:user_id => @detail.user_id) do |f| %>
       <% if @detail.errors.any? %>
         <div id="error_explanation" style="color: red;">
@@ -19,7 +16,7 @@
           </ul>
         </div>
       <% end %>
-      <%= f.input :email, input_html: {value: @detail.email}, :label => "email"%>
+      <%= f.input :email, input_html: {value: @detail.email}, :readonly => true,  :label => "email (not allowed to update)"%>
       <%= f.input :user_id, input_html: {value: @detail.user_id}, :as => :hidden%>
       <%= f.input :first_name, input_html: {value: @detail.first_name}, :label => "First Name"%>
       <%= f.input :last_name, input_html: {value: @detail.last_name}, :label => "Last Name"%>

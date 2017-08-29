@@ -1,7 +1,7 @@
 class PoltypesController < ApplicationController
   def index
     if user_signed_in?
-	  @poltypes= Poltype.all
+	  @poltypes= Poltype.all.reorder("Company_id")
 	  @allcompany= Company.all
 	else
 	  redirect_to new_user_session_path
@@ -33,6 +33,7 @@ class PoltypesController < ApplicationController
     if user_signed_in?
       @poltype = Poltype.find(params[:id])
       @user = current_user
+      @allcompany = Company.all
       @u_detail = @user.detail
     else
       redirect_to new_user_session_path

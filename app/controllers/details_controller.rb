@@ -1,9 +1,10 @@
 class DetailsController < ApplicationController
   def index
-    if user_signed_in?
+    @det = Detail.find_by_user_id(current_user.id)
+    if (user_signed_in? && @det.admin==true)
       @details = Detail.all
     else
-      redirect_to new_user_session_path
+      redirect_to dash_admin_path
     end
   end
   def show
@@ -30,12 +31,13 @@ class DetailsController < ApplicationController
   end
 
   def display
-    if user_signed_in?
+     @det = Detail.find_by_user_id(current_user.id)
+    if (user_signed_in? && @det.admin==true)
       @detail= Detail.find_by_user_id(params[:user_id])
       @user = current_user
       @u_detail= @user.detail
     else
-      redirect_to new_user_session_path
+      redirect_to dash_admin_path
     end
   end
   
@@ -46,6 +48,7 @@ class DetailsController < ApplicationController
     if @detail.update(detail_params)
       redirect_to details_path, :notice => "user details edited!!" 
     else
+      @detail.update(detail_params)
       render 'cedit'
     end  
   end
@@ -56,6 +59,7 @@ class DetailsController < ApplicationController
     if @detail.update(detail_params)
      redirect_to dash_admin_path, :notice => "user details edited!!" 
     else
+      @det.update(detail_params)
       render 'cedit'
     end
   end

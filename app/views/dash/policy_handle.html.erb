@@ -1,7 +1,15 @@
+<% @d=Detail.find_by_user_id(current_user) %>
 <div class="container info-box" >
-  <p>this section deals with all the policy bought by users.<br>
-    <strong>customers</strong> will be able to view all the policies bought by them and also buy new policy for themselves. however editing is not possible. to edit please contact any of the admins
+<% if(@d.admin==false) %>
+  <p>
+    <strong>my policies</strong> will display all the policies bought by you.<br>
+    <strong>add new policy</strong> will let you buy a new policy from various choice of companies and plans
+  </p>
+<% else %>
+  <p>
+    <strong>view all policies</strong> will display all the policies bought by all the users.<br>
+    <strong>add new policy</strong> will let you buy a new policy from various choice of companies and plans for any user
   </p>
 </div>
-  
+<% end %>  
   

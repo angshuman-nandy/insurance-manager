@@ -1,4 +1,10 @@
-<h1 class="form-info"> new plan </h1>
-<% @user = current_user %>
-<% @u_detail = @user.detail %>
-<%= render "form" %>
+<% @allcompany= Company.all %>
+<% if (@allcompany.count!=0)%>
+  <h1 class="form-info"> new plan </h1>
+  <% @user = current_user %>
+  <% @u_detail = @user.detail %>
+  <%= render "form" %>
+<% else %>
+   <h1 class="form-info">no companies available!! please add a company to continue adding a plan </h1>
+<% end %>
+

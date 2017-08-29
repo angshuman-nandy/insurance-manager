@@ -84,7 +84,7 @@ end
   def create
     @policy= Policy.new(policy_params)
 	    if @policy.save
-  	    redirect_to dash_admin_path, :notice => "policy saved!!" 
+  	    redirect_to policies_path, :notice => "policy saved!!" 
   	  else
   		  redirect_to new_policy_path, :notice => "policy could not be saved please enter all details"
   	  end

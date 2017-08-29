@@ -57,16 +57,10 @@ class CompaniesController < ApplicationController
 
   def destroy
     @company = Company.find(params[:id])
-    @poltype_del = Poltype.where(company_id: @company.id)
-    @policy_del = Policy.where(company_id:  @company.id)
-    if @policy_del!= nil && @poltype_del!= nil
-      @policy_del.each do |k|
-        k.destroy
-      end
-
-      @poltype_del.each do |i|
+    @pol_d = Policy.where(:company_id => @company.id)
+    @pol_d.each do |i|
       i.destroy
-      end
+      
     end
     @company.destroy
  

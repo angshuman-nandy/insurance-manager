@@ -1,9 +1,17 @@
-<% @det = current_user.detail %>
-<div class="container welcomebox">
-  <h1>welcome</h1> <h2><%= @det.first_name%> <%= @det.last_name%> </h2>
-  <h3>you are customer</h3><br>
-  <h3> you can view and compare all the companies,policies,plans </h3>
-  <h3> you can edit your details</h3>
-  <h3> you can delete posts by you</h3>
+<% @u_id = current_user.id %>
+<% @policies = Policy.where(:user_id => @u_id)%>
 
+<% @det = current_user.detail %>
+<div class="container">
+  <div class="rows">
+    <div class ="col-md-12 col-sm-12 col-xs-12 welcomebox">
+      <h1>welcome</h1> <h2><%= @det.first_name%> <%= @det.last_name%> </h2>
+      <h3>you have <%= pluralize(@policies.count, "policy") %> <br> you can view and add policies from <strong>Policies</strong> tab </h3><br>
+      <h3>There are <%= pluralize(Company.all.count,"company") %> to choose from <br> you can view them from the <strong>Companies</strong> tab </h3>
+       <h3>There are <%= pluralize(Poltype.all.count,"plan") %> to choose from <br> you can view them from the <strong>Plans</strong> tab </h3>
+      <h3> you can edit your details</h3>
+    </div>
+  </div>
 </div>
+ 
+ 

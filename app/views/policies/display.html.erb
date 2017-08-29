@@ -1,3 +1,6 @@
+<div class="container">
+  <%= link_to "back", companies_path,:class => "btn btn-primary custom_btn_small" %>
+</div>
 <% @usrd = Detail.find_by_user_id(current_user.id) %>
 <% @usr=User.find(@policy.user_id) %>
 <% @ud= @usr.detail %>
@@ -13,7 +16,7 @@
   <p><strong>Commission :</strong><%= @policy.commission%></p><br>
   <p><strong>Purchase date :</strong><%= @policy.purchase_date%></p><br>
   <p><strong>Mature date :</strong><%= @policy.mature_date%></p><br>
-  <%= link_to "back", policies_path,:class => "btn btn-primary custom_btn_small" %>
+ 
   <% if @usrd.admin == true %>
     <td><%= link_to "edit", edit_policy_path(@policy), :class => "btn btn-primary custom_btn_small" %></td>
     <td><%= link_to 'Destroy', policy_path(@policy),
