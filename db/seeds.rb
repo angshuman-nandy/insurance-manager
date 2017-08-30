@@ -9,9 +9,9 @@
 
 
 u1=User.create(email: 'admin@gmail.com',password: 'password',password_confirmation: 'password')
-Detail.create(email: u1.email, first_name: 'firstName', last_name: 'lastName', admin: 1, contact_number: 4893823429, address: 'some address',user_id: u1.id)
+Detail.create(email: u1.email, first_name: 'AdminFirstName', last_name: 'AdminLastName', admin: 1, contact_number: 4893823429, address: 'some address',user_id: u1.id)
 u2=User.create(email: 'user@gmail.com',password: 'password',password_confirmation: 'password')
-Detail.create(email: u2.email, first_name: 'FirstName', last_name: 'Lastname', admin: 0, contact_number: 1233453429, address: 'some differernt address',user_id: u2.id)
+Detail.create(email: u2.email, first_name: 'UserFirstName', last_name: 'UserLastname', admin: 0, contact_number: 1233453429, address: 'some differernt address',user_id: u2.id)
 c1=Company.create(name:"HDFC life",description: 'HDFC Life is a long-term life insurance provider with its headquarters in Mumbai, offering individual and group insurance.')
 p1=Poltype.create(name: "retirement",description: 'some description of plan', company_id: c1.id, duration: 20, sum_insured: 3000000, premium_amount:3000)
 c2=Company.create(name:"LIC",description: 'Life Insurance Corporation of India is an Indian state-owned insurance group and investment company headquartered in Mumbai. It is the largest insurance company in India with an estimated asset value of ₹1,560,482 crore.')
